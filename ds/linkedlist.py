@@ -1,32 +1,38 @@
-class Node:
+class SingleNode:
 	def __init__(self, data):
 		self.data = data
 		self.next = None
+
+class DoubleNode:
+	def __init__(self, data):
+		self.previous = None
+		self.next = None
+		self.data = data
 
 class LinkedList:
 	def __init__(self):
 		self.__head = None
 		self.__tail = None
 
-	def set_head(self, node: Node = None):
+	def set_head(self, node: SingleNode = None):
 		self.__head = node
 
 	def get_head(self):
 		return self.__head
 
-	def set_tail(self, node: Node = None):
+	def set_tail(self, node: SingleNode = None):
 		self.__tail = node
 
 	def get_tail(self):
 		return self.__tail
 
-	def push(self, node: Node):
+	def push(self, node: SingleNode):
 		pass
 
-	def append(self, node: Node):
+	def append(self, node: SingleNode):
 		pass
 
-	def insert(self, node: Node):
+	def insert(self, node: SingleNode):
 		if self.get_head() is None:
 			self.set_head(node)
 		else:
@@ -36,7 +42,7 @@ class LinkedList:
 			current_node.next = node
 			self.set_tail(current_node.next)
 
-	def delete(self, node: Node):
+	def delete(self, node: SingleNode):
 		prev_node, current_node = self.search_node(node)
 
 		# Delete head
@@ -58,7 +64,7 @@ class LinkedList:
 
 		return None
 
-	def search(self, node: Node):
+	def search(self, node: SingleNode):
 		if self.get_head() is not None:
 			prev_node = None
 			current_node = self.get_head()
@@ -81,7 +87,7 @@ if __name__ == '__main__':
 	ll = LinkedList()
 
 	for _ in range(0, n):
-		node = Node(a[_])
+		node = SingleNode(a[_])
 		ll.insert_node(node)
 
 	ll.print_linked_list()
