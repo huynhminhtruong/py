@@ -8,13 +8,13 @@ class Tree:
 	def __init__(self, node: Node):
 		self.root = node
 
-	def add_node(self, node: Node):
+	def add(self, node: Node):
 		pass
 
-	def remove_node(self, node: Node):
+	def remove(self, node: Node):
 		pass
 
-	def search_node(self, value: int):
+	def search(self, value: int):
 		pass
 
 	def inorder_traversal(self):
