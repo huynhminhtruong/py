@@ -1,52 +1,94 @@
-class Book:
-	def __init__(self, name, writer, year):
-		self.name = name
-		self.writer = writer
-		self.year = year
+class Node:
+	def __init__(self, data):
+		self.data = data
 		self.next = None
 
-class Books:
+class LinkedList:
 	def __init__(self):
-		self.head = None
+		self.__head = None
+		self.__tail = None
 
-	def add_book(self, book: Book):
-		if (self.head == None):
-			self.head = book
+	def set_head(self, node: Node = None):
+		self.__head = node
+
+	def get_head(self):
+		return self.__head
+
+	def set_tail(self, node: Node = None):
+		self.__tail = node
+
+	def get_tail(self):
+		return self.__tail
+
+	def push(self, node: Node):
+		pass
+
+	def append(self, node: Node):
+		pass
+
+	def insert(self, node: Node):
+		if self.get_head() is None:
+			self.set_head(node)
 		else:
-			current_node = self.head
+			current_node = self.get_head()
 			while (current_node.next != None):
 				current_node = current_node.next
-			current_node.next = book
+			current_node.next = node
+			self.set_tail(current_node.next)
 
-	def get_books_max_year(self, year):
-		current_node = self.head
+	def delete(self, node: Node):
+		prev_node, current_node = self.search_node(node)
+
+		# Delete head
+		if (prev_node == None and current_node != None):
+			self.set_head(current_node.next)
+			current_node = None
+			return current_node
+
+		# Delete tail
+		if (prev_node != None and current_node == None):
+			prev_node.next = None
+			self.set_tail(prev_node)
+			return current_node
+
+		# Delete node between head and tail
+		if (prev_node != None and current_node != None):
+			prev_node.next = current_node.next
+			return current_node
+
+		return None
+
+	def search(self, node: Node):
+		if self.get_head() is not None:
+			prev_node = None
+			current_node = self.get_head()
+			while (current_node != None and current_node.data != node.data):
+				prev_node = current_node
+				current_node = current_node.next
+			if (current_node is not None):
+				return prev_node, current_node
+		return None, None
+
+	def print_linked_list(self):
+		current_node = self.get_head()
 		while (current_node != None):
-			if (current_node.year == year):
-				print(current_node.name)
+			print(current_node.data)
 			current_node = current_node.next
 
-def execute_books():
-	n = int(input())
-	books = Books()
-	years = [0] * 2022
-	max_publish = 0
-	max_year = -1
-	for _ in range(0, n):
-		name = input()
-		writer = input()
-		year = int(input())
-
-		book = Book(name, writer, year)
-		books.add_book(book)
-
-		years[year] += 1
-		if (years[year] > max_publish):
-			max_publish = years[year]
-			max_year = year
-		elif years[year] == max_publish:
-			max_year = year if max_year > year else max_year
-	
-	books.get_books_max_year(max_year)
-
 if __name__ == '__main__':
-	execute_books()
+	n = int(input())
+	a = [int(x) for x in input().split()]
+	ll = LinkedList()
+
+	for _ in range(0, n):
+		node = Node(a[_])
+		ll.insert_node(node)
+
+	ll.print_linked_list()
+	print("Deleting a node: ")
+	data = int(input())
+	print("Alter deleting operator is executed: ")
+	del_node = Node(data)
+	ll.delete_node(del_node)
+	ll.print_linked_list()
+
