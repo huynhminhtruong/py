@@ -3,20 +3,27 @@ import os
 import random
 import re
 import sys
+from operator import itemgetter, attrgetter
+
+def _convert_status(status: str):
+    status.lower()
+    if status == "rat":
+        return 0
+    if status in ("woman", "child"):
+        return 1
+    if status == "man":
+        return 2
+    return 3
 
 if __name__ == '__main__':
-    a, b, c = input(), input(), input()
+    n = int(input())
+    res = list()
 
-    x = [0] * 26
+    for _ in range(n):
+        name, status = input().strip().split()
+        res.append((name, _convert_status(status)))
+    res.sort(key=itemgetter(1))
 
-    for _ in a:
-        x[ord(_) % 65] += 1
-    for _ in b:
-        x[ord(_) % 65] += 1
-    for _ in c:
-        x[ord(_) % 65] -= 1
-
-    res = list(filter(lambda i: i != 0, x))
-    
-    print("YES" if not(len(res) > 0) else "NO")
+    for _ in res:
+        print(_[0])
     

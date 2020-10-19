@@ -3,6 +3,17 @@ import os
 import random
 import re
 import sys
+from operator import itemgetter, attrgetter
+
+def _convert_status(status: str):
+    status.lower()
+    if status == "rat":
+        return 0
+    if status in ("woman", "child"):
+        return 1
+    if status == "man":
+        return 2
+    return 3
 
 def _141A_Amusing_Joke():
     a, b, c = input(), input(), input()
@@ -19,6 +30,19 @@ def _141A_Amusing_Joke():
     res = list(filter(lambda i: i != 0, x))
     
     print("YES" if not(len(res) > 0) else "NO")
+
+def _63A_Sinking_Ship():
+    n = int(input())
+    res = list()
+
+    for _ in range(n):
+        # name = list(map(_convert_status, input().strip().split()))
+        name, status = input().strip().split()
+        res.append((name, _convert_status(status)))
+    res.sort(key=itemgetter(1))
+
+    for _ in res:
+        print(_[0])
 
 if __name__ == '__main__':
     n = int(input())
