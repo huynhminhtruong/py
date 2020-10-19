@@ -5,25 +5,12 @@ import re
 import sys
 from operator import itemgetter, attrgetter
 
-def _convert_status(status: str):
-    status.lower()
-    if status == "rat":
-        return 0
-    if status in ("woman", "child"):
-        return 1
-    if status == "man":
-        return 2
-    return 3
-
 if __name__ == '__main__':
-    n = int(input())
-    res = list()
-
-    for _ in range(n):
-        name, status = input().strip().split()
-        res.append((name, _convert_status(status)))
-    res.sort(key=itemgetter(1))
-
-    for _ in res:
-        print(_[0])
+    n, s = int(input()), input()
+    res = ()
+    for i in range(1, n):
+        if ord(s[i]) < ord(s[i - 1]):
+            res = (i, i + 1)
+            break
+    print("YES \n{0} {1}".format(res[0], res[1]) if len(res) > 0 else "NO")
     

@@ -44,6 +44,12 @@ def _63A_Sinking_Ship():
     for _ in res:
         print(_[0])
 
+def _339A_Helpful_Maths():
+    n = [int(x) for x in input().strip().split("+")]
+    n.sort()
+    s = "+".join([str(x) for x in n])
+    print(s)
+
 if __name__ == '__main__':
     n = int(input())
     
