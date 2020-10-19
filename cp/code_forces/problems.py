@@ -50,6 +50,15 @@ def _339A_Helpful_Maths():
     s = "+".join([str(x) for x in n])
     print(s)
 
+def _1155A_Reverse_a_Substring():
+    n, s = int(input()), input()
+    res = ()
+    for i in range(1, n):
+        if ord(s[i]) < ord(s[i - 1]):
+            res = (i, i + 1)
+            break
+    print("YES \n{0} {1}".format(res[0], res[1]) if len(res) > 0 else "NO")
+
 if __name__ == '__main__':
     n = int(input())
     
