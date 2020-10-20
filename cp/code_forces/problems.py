@@ -59,6 +59,23 @@ def _1155A_Reverse_a_Substring():
             break
     print("YES \n{0} {1}".format(res[0], res[1]) if len(res) > 0 else "NO")
 
+def _490A_Team_Olympiad():
+    n, t = int(input()), [int(x) for x in input().strip().split()]
+    a, b, c = [[], [], []], 10 ** 6, []
+
+    for i in range(n):
+        a[t[i] - 1].append(i + 1)
+    for i in range(3):
+        b = len(a[i]) if len(a[i]) < b else b
+    for i in range(b):
+        c.append((a[0][i], a[1][i], a[2][i]))
+
+    print(b)
+
+    if b > 0:
+        for i in c:
+            print(" ".join([str(x) for x in i]))
+
 if __name__ == '__main__':
     n = int(input())
     
