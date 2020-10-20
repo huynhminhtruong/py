@@ -76,6 +76,16 @@ def _490A_Team_Olympiad():
         for i in c:
             print(" ".join([str(x) for x in i]))
 
+def _432A_Choosing_Teams():
+    n, k = [int(x) for x in input().strip().split()]
+    y = [int(x) for x in input().strip().split()]
+    r = 0
+
+    for p in y:
+        if 5 - p >= k:
+            r += 1
+    print("{0}".format(int(r / 3)))
+
 if __name__ == '__main__':
     n = int(input())
     
