@@ -3,6 +3,7 @@ import os
 import random
 import re
 import sys
+import functools
 from operator import itemgetter, attrgetter
 
 def _convert_status(status: str):
@@ -104,6 +105,21 @@ def _507A_Amr_And_Music():
         s += str(b[x][0])
         s += " "
     print(s.lstrip())
+
+def _1011A_Stages():
+    n, k = list(map(int, input().strip().split()))
+    s = sorted(list(map(ord, input().strip())))
+    a, p = list(), 0
+
+    a.append(s[p])
+
+    for i in range(1, n):
+        if s[i] - s[p] >= 2:
+            a.append(s[i])
+            p = i
+    s = list(map(lambda x: x - ord('a') + 1, a))
+    p = -1 if len(s) < k else functools.reduce(lambda a, b: a + b, s[:k])
+    print("{}".format(p))
 
 if __name__ == '__main__':
     n = int(input())
