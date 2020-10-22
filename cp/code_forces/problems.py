@@ -121,6 +121,19 @@ def _1011A_Stages():
     p = -1 if len(s) < k else functools.reduce(lambda a, b: a + b, s[:k])
     print("{}".format(p))
 
+def _545D_Queue():
+    n = int(input())
+    s = list(map(int, input().strip().split()))
+    swap = sorted(s)
+    r, t = 0, 0
+
+    for i in range(n):
+        if swap[i] >= t:
+            r += 1
+            t += swap[i]
+
+    print(r)
+
 if __name__ == '__main__':
     n = int(input())
     
