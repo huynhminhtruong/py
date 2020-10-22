@@ -12,6 +12,8 @@ if __name__ == '__main__':
     swap = sorted(s)
     r, t = 0, 0
 
+    print(swap)
+
     for i in range(n):
         if swap[i] >= t:
             r += 1
@@ -32,9 +34,9 @@ if __name__ == '__main__':
 # Help Susie find out what is the maximum number of not disappointed people can be achieved by swapping people in the queue.
 
 # Input
-# The first line contains integer n (1 ≤ n ≤ 105).
+# The first line contains integer n (1 ≤ n ≤ 10^5).
 
-# The next line contains n integers ti (1 ≤ ti ≤ 109), separated by spaces.
+# The next line contains n integers ti (1 ≤ ti ≤ 10^9), separated by spaces.
 
 # Output
 # Print a single number — the maximum number of not disappointed people in the queue.
@@ -47,6 +49,8 @@ if __name__ == '__main__':
 # 10
 # 13 2 5 55 21 34 1 8 1 3
 # 1 1 2 3 5 8 13 21 34 55
-# 1 1 2 _ _ _ 13 _ 34 55
+# 1 1 2 _ 5 _ 13 _ 34 _
 
-
+# 10
+# 10000 40000 10000 50000 20000 100000 10000 100 30000 500
+# 100 500 10000 _ _ 20000 _ 40000 _ 100000
