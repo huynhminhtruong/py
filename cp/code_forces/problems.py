@@ -134,9 +134,62 @@ def _545D_Queue():
 
     print(r)
 
+def _12C_Fruits_Solved_By_List():
+    n, m = list(map(int, input().strip().split()))
+    a, b, c = list(map(int, input().strip().split())), list(), 1
+    r, min_val, max_val = list(), 0, 0
+
+    for i in range(m):
+        b.append(input())
+
+    a.sort()
+    b.sort()
+
+    if m > 1:
+        for i in range(1, m):
+            if b[i] != b[i - 1]:
+                r.append((b[i - 1], c))
+                c = 1
+            else:
+                c += 1
+            if i == m - 1:
+                r.append((b[i], c))
+
+        r.sort(key=itemgetter(1), reverse=True)
+
+        for i in range(len(r)):
+            min_val += a[i] * r[i][1]
+            max_val += a[n - i - 1] * r[i][1]
+    else:
+        min_val += a[0]
+        max_val += a[n - 1]
+
+    print("{0} {1}".format(min_val, max_val))
+
+def _12C_Fruits_Solved_By_Dictionary():
+    n, m = list(map(int, input().strip().split()))
+    a = list(map(int, input().strip().split()))
+    d = dict()
+
+    for i in range(m):
+        t = input()
+        d[t] = d.get(t, 0) + 1
+
+    a.sort()
+    d = sorted(d.values(), reverse=True)
+
+    for c in a, a[::-1]:
+        print(sum(d[i] * c[i] for i in range(len(d))), end=' ')
+
 if __name__ == '__main__':
-    n = int(input())
+    n = list(map(int, input().strip().split()))
+    c = 0
+    for i in n, n[::-1]:
+        c += 1
+        print(i)
+    print(c)
     
+# 1 2 3 4 5 6
 
 # Get input from file
 # file_input = open('input.in', 'r')
