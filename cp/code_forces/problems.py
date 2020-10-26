@@ -181,6 +181,27 @@ def _12C_Fruits_Solved_By_Dictionary():
     for c in a, a[::-1]:
         print(sum(d[i] * c[i] for i in range(len(d))), end=' ')
 
+def _257A_Sockets():
+    n, m, k = list(map(int, input().strip().split()))
+    a, b, i = list(map(int, input().strip().split())), 0, 0
+
+    a.sort(reverse=True)
+
+    if m <= k:
+        print(b)
+    else:
+        while i < len(a):
+            if m <= k:
+                break
+            if k > 0:
+                k -= 1
+            elif m > 0:
+                m += 1
+            m -= a[i]
+            b += 1
+            i += 1
+        print("-1" if m > k else "{}".format(b))
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0

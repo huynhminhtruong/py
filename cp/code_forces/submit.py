@@ -12,16 +12,20 @@ if __name__ == '__main__':
 
     a.sort(reverse=True)
 
-    while k > 0 and m > k and i < len(a):
-        m -= a[i]
-        k -= 1
-        b += 1
-        i += 1
-
-    if k <= 0 and m > 0:
-        print(-1)
-    else:
+    if m <= k:
         print(b)
+    else:
+        while i < len(a):
+            if m <= k:
+                break
+            if k > 0:
+                k -= 1
+            elif m > 0:
+                m += 1
+            m -= a[i]
+            b += 1
+            i += 1
+        print("-1" if m > k else "{}".format(b))
 
 
 # 3 5 3
@@ -41,3 +45,7 @@ if __name__ == '__main__':
 
 # 5 10 1
 # 4 3 4 2 4
+
+# 5 50 6
+# 2 1 3 1 3
+# -1
