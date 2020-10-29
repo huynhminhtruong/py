@@ -5,6 +5,7 @@ import re
 import sys
 import functools
 from operator import itemgetter, attrgetter
+from collections import Counter
 
 def _convert_status(status: str):
     status.lower()
@@ -201,6 +202,23 @@ def _257A_Sockets():
             b += 1
             i += 1
         print("-1" if m > k else "{}".format(b))
+
+def _381B_Sereja_and_Stairs():
+    m = int(input())
+    b = list(map(int, input().split()))
+    s = sorted(set(b))
+    d = dict()
+    r = []
+    # c = Counter(b)
+
+    for i in b:
+        d[i] = d.get(i, 0) + 1
+
+    for k in s[:-1]:
+        if d[k] > 1:
+            r.append(k)
+
+    print("{0}\n{1} {2}".format(len(s) + len(r), " ".join(map(str, s)), " ".join(map(str, r[::-1]))))
 
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
