@@ -220,6 +220,26 @@ def _381B_Sereja_and_Stairs():
 
     print("{0}\n{1} {2}".format(len(s) + len(r), " ".join(map(str, s)), " ".join(map(str, r[::-1]))))
 
+def _1041A_Heist():
+    n = int(input())
+    b, c = list(map(int, input().split())), 0
+
+    b.sort()
+
+    for i in range(1, n):
+        c += b[i] - b[i - 1] - 1
+    print(c)
+
+def _1430B_Barrels():
+    INPUT = lambda: list(map(int, input().split()))
+    t = int(input())
+
+    for i in range(t):
+        n, k = INPUT()
+        a = INPUT()
+        a.sort(reverse=True)
+        print(sum(x for x in a[:k + 1]))
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0

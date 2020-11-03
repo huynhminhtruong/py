@@ -8,8 +8,5 @@ from operator import itemgetter, attrgetter
 from collections import Counter
 
 if __name__ == '__main__':
-    m = int(input())
-    b = list(map(int, input().split()))
-    s = sorted(set(b))
-    d = dict()
-    r = []
+    Y = lambda: list(map(int, input().split()))
+    t = int(input())
