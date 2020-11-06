@@ -240,6 +240,51 @@ def _1430B_Barrels():
         a.sort(reverse=True)
         print(sum(x for x in a[:k + 1]))
 
+def _405A_Gravity_Flip():
+    Y = lambda: list(map(int, input().split()))
+    n = int(input())
+    a = Y()
+    a.sort()
+    print(" ".join(list(map(str, a))))
+
+def _1144B_Parity_Alternated_Deletions_By_Built_In_Filter():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+    even, odd = list(), list()
+
+    n = N()
+    a = Y()
+    a.sort()
+
+    even = list(filter(lambda x: x % 2 == 0, a))
+    odd = list(filter(lambda y: y % 2 == 1, a))
+    h = len(even) - len(odd)
+
+    if h == 0 or h == 1:
+        print(0)
+    else:
+        print(sum(even[:h - 1]) if h > 0 else sum(odd[:(h*-1) - 1]))
+
+def _1144B_Parity_Alternated_Deletions_By_Built_In_Pop_List():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+    even, odd = list(), list()
+
+    n = N()
+    a = Y()
+    a.sort()
+
+    for _ in a:
+        even.append(_) if _ % 2 == 0 else odd.append(_)
+    while len(even) and len(odd):
+        even.pop()
+        odd.pop()
+    if len(even):
+        even.pop()
+    if len(odd):
+        odd.pop()
+    print("{}".format(sum(even) + sum(odd)))
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
