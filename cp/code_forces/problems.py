@@ -320,6 +320,16 @@ def _16B_Burglar_And_Matches():
 
     print(r)
 
+def _263B_Squares():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    a = Y()
+    a.sort(reverse=True)
+
+    print("{0} {1}".format(a[k - 1], 0) if k <= n else -1)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
