@@ -308,6 +308,8 @@ def _16B_Burglar_And_Matches():
     for i in range(m):
         a.append(Y())
     a.sort(key=itemgetter(1), reverse=True)
+    # Sort by multiple keys
+    # a.sort(key=lambda i: (i[1], i[0]), reverse=True)
 
     for i in a:
         if n <= 0:
