@@ -298,6 +298,26 @@ def _1216B_Shooting():
         r += -a[i][0] * i + 1
     print("{0}\n{1}".format(r, " ".join(map(str, [x[1] for x in a]))))
 
+def _16B_Burglar_And_Matches():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n, m = Y()
+    a, r = list(), 0
+
+    for i in range(m):
+        a.append(Y())
+    a.sort(key=itemgetter(1), reverse=True)
+
+    for i in a:
+        if n <= 0:
+            break
+        h = n - i[0]
+        r += i[0] * i[1] if h > 0 else n * i[1]
+        n -= i[0]
+
+    print(r)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
