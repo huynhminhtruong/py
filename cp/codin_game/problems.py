@@ -330,25 +330,6 @@ def _263B_Squares():
 
     print("{0} {1}".format(a[k - 1], 0) if k <= n else -1)
 
-def _242B_Big_Segment():
-    P = lambda: map(int, input().split())
-    N = lambda: int(input())
-
-    n = N()
-    MIN, MAX = 10 ** 9 + 1, 0
-    a, f = list(), False
-
-    for i in range(n):
-        l, r = P()
-        MIN = min(l, MIN)
-        MAX = max(r, MAX)
-        a.append((l, r))
-    for i in range(n):
-        if a[i][0] == MIN and a[i][1] == MAX:
-            f = True
-            break
-    print(i + 1 if f else -1)
-
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
