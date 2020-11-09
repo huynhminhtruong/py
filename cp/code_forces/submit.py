@@ -12,16 +12,17 @@ if __name__ == '__main__':
     P = lambda: map(int, input().split())
     N = lambda: int(input())
 
-    n = N()
-    MIN, MAX = 10 ** 9 + 1, 0
-    a, f = list(), False
+    n, k = P()
+    a, r = list(), 0
+
     for i in range(n):
-        l, r = map(int, input().split())
-        MIN = min(l, MIN)
-        MAX = max(r, MAX)
-        a.append((l, r))
-    for i in range(n):
-        if a[i][0] == MIN and a[i][1] == MAX:
-            f = True
+        p, t = P()
+        a.append((p, -t))
+    a.sort(key=lambda item: (item[0], item[1]), reverse=True)
+    b = Counter(a)
+    b = b.values()
+    for i in b:
+        r += i
+        if k <= r:
+            print(i)
             break
-    print(i + 1 if f else -1)

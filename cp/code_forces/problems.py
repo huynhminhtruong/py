@@ -349,6 +349,24 @@ def _242B_Big_Segment():
             break
     print(i + 1 if f else -1)
 
+def _166A_Rank_List():
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    a, r = list(), 0
+
+    for i in range(n):
+        p, t = P()
+        a.append((p, -t))
+    a.sort(key=lambda item: (item[0], item[1]), reverse=True)
+    b = Counter(a)
+    b = b.values()
+    for i in b:
+        r += i
+        if k <= r:
+            print(i)
+            break
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
