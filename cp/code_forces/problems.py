@@ -349,16 +349,15 @@ def _242B_Big_Segment():
             break
     print(i + 1 if f else -1)
 
-def _166A_Rank_List():
+def _166A_Rank_List_By_Counter():
     P = lambda: map(int, input().split())
 
     n, k = P()
     a, r = list(), 0
 
     for i in range(n):
-        p, t = P()
-        a.append((p, -t))
-    a.sort(key=lambda item: (item[0], item[1]), reverse=True)
+        a.append([int(x) for x in input().split()])
+    a.sort(key=lambda item: (item[0], -item[1]), reverse=True)
     b = Counter(a)
     b = b.values()
     for i in b:
@@ -366,6 +365,17 @@ def _166A_Rank_List():
         if k <= r:
             print(i)
             break
+
+def _166A_Rank_List_By_Built_In_Count():
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    a = list()
+
+    for i in range(n):
+        a.append([int(x) for x in input().split()])
+    a.sort(key=lambda item: (item[0], -item[1]), reverse=True)
+    print(a.count(a[k - 1]))
 
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
