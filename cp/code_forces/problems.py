@@ -377,6 +377,31 @@ def _166A_Rank_List_By_Built_In_Count():
     a.sort(key=lambda item: (item[0], -item[1]), reverse=True)
     print(a.count(a[k - 1]))
 
+def _1228A_Distinct_Digits():
+    P = lambda: map(int, input().split())
+
+    l, r = P()
+    f = False
+
+    for i in range(l, r + 1):
+        s = str(i)
+        f = len(set(s)) == len(s)
+        if f:
+            break
+    print(i if f else -1)
+
+def _1230A():
+    Y = lambda: list(map(int, input().split()))
+
+    a = Y()
+    s = sum(a)
+    if s % 2:
+        print("NO")
+    else:
+        s /= 2
+        b = [int(s - x) for x in a if int(s - x) in a]
+        print("YES" if (int(s) in a) or (len(b) == len(a)) else "NO")
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0

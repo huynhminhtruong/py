@@ -12,19 +12,18 @@ if __name__ == '__main__':
     P = lambda: map(int, input().split())
     N = lambda: int(input())
 
-    n = N()
-    a = Y()
-    a.sort()
-    i = 0
+    n, a = N(), Y()
+    l, v, r = 0, a[0], 1
+    MIN = 2 ** 31 + 1
 
-    if n > 0:
-        while i < n and a[i] <= 0:
-            i += 1
-        if i == 0:
-            print(a[0])
-        elif i == n:
-            print(a[n - 1])
+    for i in range(1, n):
+        if a[i] < a[l]:
+            if v > a[i]:
+                v = a[i]
+            if MIN > v - a[l]:
+                MIN = v - a[l]
         else:
-            print(a[i] if a[i] <= a[i - 1] * -1 else a[i - 1])
-    else:
-        print(0)
+            r += 1
+            l = i
+            v = a[i]
+    print(MIN if r < n else 0)
