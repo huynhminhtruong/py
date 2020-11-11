@@ -48,6 +48,28 @@ def _Power_Of_Thor_Episode_1():
             b += -1 if y < b else 1
             a += -1 if x < a else 1
 
+def _ASCII_Art():
+    N = lambda: int(input())
+
+    l = N()
+    h = N()
+    s = [ord(x.upper()) for x in input()]
+    t, res = list(), list()
+
+    for i in range(h):
+        t.append(input())
+    for row in t:
+        r = ""
+        for i in range(len(s)):
+            if s[i] >= ord('A') and s[i] <= ord('Z'):
+                p = (s[i] % ord('A')) * l
+                r += row[p:p + l]
+            else:
+                r += row[l * 26:l * 27]
+        res.append(r)
+    for row in res:
+        print(row)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
