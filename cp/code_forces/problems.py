@@ -402,6 +402,20 @@ def _1230A():
         b = [int(s - x) for x in a if int(s - x) in a]
         print("YES" if (int(s) in a) or (len(b) == len(a)) else "NO")
 
+def _1005A_Tanya_And_Stairways():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a, b = Y(), list()
+    l, r = 0, 0
+
+    for i in range(1, n):
+        if a[i] == 1:
+            b.append(a[i - 1])
+    b.append(a[-1])
+    print("{0}\n{1}".format(len(b), " ".join([str(x) for x in b])))
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
