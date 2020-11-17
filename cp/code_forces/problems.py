@@ -416,6 +416,63 @@ def _1005A_Tanya_And_Stairways():
     b.append(a[-1])
     print("{0}\n{1}".format(len(b), " ".join([str(x) for x in b])))
 
+def _255A_Workout():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+    r = [0, 0, 0]
+
+    for i in range(n):
+        r[i % 3] += a[i]
+    b = max(r)
+    if r[0] == b:
+        print("chest")
+    elif r[1] == b:
+        print("biceps")
+    else:
+        print("back")
+
+def _344A_Magnets():
+    N = lambda: int(input())
+
+    n = N()
+    p, r = 0, 1
+
+    for i in range(n):
+        tmp = int(input())
+        r += p and p != tmp
+        p = tmp
+    print(r)
+
+def _448A_Rewards():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    a = Y()
+    b = Y()
+    n = N()
+
+    r = math.ceil(sum(a) / 5) + math.ceil(sum(b) / 10)
+    print("YES" if r <= n else "NO")
+
+def _999A_Mishka_And_Contest():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    a = Y()
+    l, r = 0, n - 1
+
+    while l < r and (a[l] <= k or a[r] <= k):
+        if a[l] <= k:
+            l += 1
+        if a[r] <= k:
+            r -= 1
+    print("{}".format((n if a[r] <= k else n - 1) if r == l else (n - (r - l + 1))))
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
