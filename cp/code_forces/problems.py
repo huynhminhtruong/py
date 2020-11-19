@@ -473,6 +473,22 @@ def _999A_Mishka_And_Contest():
             r -= 1
     print("{}".format((n if a[r] <= k else n - 1) if r == l else (n - (r - l + 1))))
 
+def _287A_IQ_Test():
+    a = list()
+    f = False
+
+    for i in range(4):
+        a.append(input())
+    for i in range(3):
+        for c in range(3):
+            r = Counter([a[i][c], a[i + 1][c], a[i][c + 1], a[i + 1][c + 1]])
+            if r['#'] != 2 and r['.'] != 2:
+                f = True
+                break
+        if f:
+            break
+    print("YES" if f else "NO")
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
