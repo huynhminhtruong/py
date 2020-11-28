@@ -12,21 +12,20 @@ if __name__ == '__main__':
     P = lambda: map(int, input().split())
     N = lambda: int(input())
 
-    l = N()
-    h = N()
-    s = [ord(x.upper()) for x in input()]
-    t, res = list(), list()
-
-    for i in range(h):
-        t.append(input())
-    for row in t:
-        r = ""
-        for i in range(len(s)):
-            if s[i] >= ord('A') and s[i] <= ord('Z'):
-                p = (s[i] % ord('A')) * l
-                r += row[p:p + l]
-            else:
-                r += row[l * 26:l * 27]
-        res.append(r)
-    for row in res:
-        print(row)
+"""
+16 14
+F  E  D  C  B  A
+|  |--|  |  |  |
+|--|  |--|  |--|
+|  |--|  |--|  |
+|  |  |  |  |--|
+|  |--|  |--|  |
+|  |  |--|  |  |
+|  |  |--|  |--|
+|--|  |  |--|  |
+|  |  |--|  |  |
+|--|  |  |  |--|
+|  |--|  |  |  |
+|  |  |--|  |  |
+0  1  2  3  4  5
+"""

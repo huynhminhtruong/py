@@ -514,6 +514,33 @@ def _66B_Petya_And_Countryside():
             down = True
     print(r if r > MAX else MAX)
 
+def _339B_Xenia_And_Ringroad():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, m = P()
+    a = Y()
+    d = 0
+
+    for i in range(m):
+        if i > 0 and a[i] < a[i - 1]:
+            d += 1
+    print(a[m - 1] + n * d - 1)
+
+def _379A_New_Year_Candles():
+    P = lambda: map(int, input().split())
+
+    a, b = P()
+    r, d = a, 0
+
+    while True:
+        d = int(a / b) + a % b
+        r += d - a % b
+        if d < b:
+             break
+        a = d
+    print(r)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
