@@ -12,5 +12,5 @@ if __name__ == '__main__':
     P = lambda: map(int, input().split())
     N = lambda: int(input())
 
-    a, b = P()
-    r, d = a, 0
+    n, L, a = P()
+    r, p = 0, 0

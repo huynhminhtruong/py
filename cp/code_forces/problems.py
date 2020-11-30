@@ -541,6 +541,49 @@ def _379A_New_Year_Candles():
         a = d
     print(r)
 
+def _237A_Free_Cash():
+    P = lambda: map(int, input().split())
+    N = lambda: int(input())
+
+    n = N()
+    a = list()
+    MAX = 1
+
+    while n > 0:
+        h, m = P()
+        a.append((h, m))
+        n -= 1
+    b = Counter(a)
+    for i in b.values():
+        if i > MAX:
+            MAX = i
+    print(MAX, max(b.values()))
+
+def _757A_Gotta_Catch():
+    # Solved by dictionary
+    d = { 'B': 0, 'u': 0, 'l': 0, 'b': 0, 'a': 0, 's': 0, 'r': 0 }
+    for i in input():
+        if i in d.keys():
+            d[i] += 1
+    d['a'] = int(d['a'] / 2)
+    d['u'] = int(d['u'] / 2)
+    print(min(d.values()))
+    # Solved by string count characters
+    s = input()
+    print(min([s.count('B'), int(s.count('u') / 2), s.count('l'), s.count('b'), int(s.count('a') / 2), s.count('s'), s.count('r')]))
+
+def _1059A_Cashier():
+    P = lambda: map(int, input().split())
+
+    n, L, a = P()
+    r, p = 0, 0
+
+    for i in range(n):
+        t, l = P()
+        r += int(t / a) if i == 0 else int((t - p) / a)
+        p = t + l
+    print(int((L - p) / a) + r)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
