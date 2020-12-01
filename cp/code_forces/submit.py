@@ -12,5 +12,16 @@ if __name__ == '__main__':
     P = lambda: map(int, input().split())
     N = lambda: int(input())
 
-    n, L, a = P()
-    r, p = 0, 0
+    n = N()
+    H, V = dict(), dict()
+    r = ""
+
+    n *= n
+
+    for i in range(n):
+        h, v = P()
+        if not (h in H.keys() or v in V.keys()):
+            H[h] = H.get(h, True)
+            V[v] = V.get(v, True)
+            r += str(i + 1) + " "
+    print(r.strip())
