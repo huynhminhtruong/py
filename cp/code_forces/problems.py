@@ -602,6 +602,61 @@ def _583A_Asphalting_Roads():
             r += str(i + 1) + " "
     print(r.strip())
 
+def _75A_Life_Without_Zeros():
+    N = lambda: int(input())
+
+    a = N()
+    b = N()
+
+    r_a = ''.join([i for i in str(a) if i != '0'])
+    r_b = ''.join([i for i in str(b) if i != '0'])
+    r_c = ''.join([i for i in str(a + b) if i != '0'])
+
+    print('YNEOS'[int(r_a) + int(r_b) != int(r_c)::2])
+
+def _733A_By_Without_ZIP_Built_In():
+    a = input()
+    a = ' ' + a + ' '
+    mx, l, vowels = 0, 0, 'AEIOUY'
+
+    for i in range(len(a)):
+        if a[i] in vowels:
+            mx = max(i - l, mx)
+            l = i
+    print(max(mx, len(a) - l - 1))
+
+def _733A_By_ZIP_Built_In():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+    N = lambda: int(input())
+
+    # enumerate return list of tuples (index, value)
+    # enumerate using for any object that supports iteration
+    a = [i for i, c in enumerate('A' + input() + 'A') if c in 'AEIOUY']
+
+    # zip merges multiple iterator like list, tuples
+    # ex: 
+    # a = (1, 2, 3, 4, 5)
+    # b = (1, 2, 3, 4, 5)
+    # zip(a, b) = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
+    # zip(a, a[1:]) = ((1, 2), (2, 3), (3, 4), (4, 5))
+    print(max(b - a for a, b in zip(a, a[1:])))
+
+def _441A_Valera_And_Antique_Items():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, v = P()
+    r = list()
+
+    for i in range(n):
+        a = Y()
+        m = min(a[1:])
+        if v > m:
+            r.append(i + 1)
+    print("{0}".format(len(r)))
+    print(*r)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
