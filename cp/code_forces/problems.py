@@ -657,6 +657,64 @@ def _441A_Valera_And_Antique_Items():
     print("{0}".format(len(r)))
     print(*r)
 
+def _1203A_Circle_Of_Students():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    q = N()
+
+    while q > 0:
+        n = N()
+        a = Y()
+        r = 0
+        for i in range(1, n):
+            if abs(a[i] - a[i - 1]) > 1:
+                r += 1
+        if r > 1 or (r == 1 and abs(a[n - 1] - a[0]) > 1):
+            print("NO")
+        else:
+            print("YES")
+        q -= 1
+
+def _404A_Valera_And_X_By_List():
+    N = lambda: int(input())
+
+    n = N()
+    a, b, d, r = list(), list(), 2, 0
+
+    for i in range(n):
+        s = input()
+        if i < int(n / 2) + (n % 2):
+            r = n - 1 - i
+        else:
+            r = i - d
+            d += 2
+        a.extend([s[i], s[r]] if i != r else s[i])
+        b.extend([s[j] for j in range(n) if not (s[j] in (s[i], s[r]))])
+    r, d, a, b = len(a), len(b), len(Counter(a)), len(Counter(b))
+    print("YNEOS"[not ((a != 1 or b != 1) or (n**2 - r != d))::2])
+
+def _404A_Valera_And_X():
+    N = lambda: int(input())
+
+    n = N()
+
+    s = [input() for _ in range(n)]
+    x, nx = s[0][0], s[0][1]
+    r = (x != nx)
+
+    for i in range(n):
+        for j in range(n):
+            if j == i or j == n - 1 - i:
+                if s[i][j] != x:
+                    r = 0
+            else:
+                if s[i][j] != nx:
+                    r = 0
+        if not r:
+            break
+    print("YNEOS"[not r::2])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
