@@ -751,6 +751,19 @@ def _1253A_Single_Push():
         print("YNEOS"[not ok::2])
         t -= 1
 
+def _139A_Petr_And_Book():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+    i = 0
+
+    while n - a[i] > 0:
+        n -= a[i]
+        i = 0 if i == 6 else i + 1
+    print(i + 1)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
