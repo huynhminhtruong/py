@@ -12,4 +12,4 @@ if __name__ == '__main__':
     P = lambda: map(int, input().split())
     N = lambda: int(input())
 
-    n = N()
+    t = N()

@@ -715,6 +715,42 @@ def _404A_Valera_And_X():
             break
     print("YNEOS"[not r::2])
 
+def _334A():
+    N = lambda: int(input())
+
+    n = N()
+    a = list()
+
+    # Using // to cast float to int
+    for i in range(n**2 // 2):
+        a.extend([i + 1, n**2 - i])
+        if (i + 1) % (n / 2) == 0:
+            print(*a)
+            a.clear()
+
+def _1253A_Single_Push():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    t = N()
+
+    while t > 0:
+        n = N()
+        a = Y()
+        b = Y()
+        l, r, ok = -1, -1, 1
+        for i in range(n):
+            if b[i] - a[i] > 0:
+                if l < 0:
+                    l = i
+                r = i
+            elif b[i] - a[i] != 0:
+                ok = 0
+        if ok and len(Counter([b[i] - a[i] for i in range(l, r + 1)])) > 1:
+            ok = 0
+        print("YNEOS"[not ok::2])
+        t -= 1
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
