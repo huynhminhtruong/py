@@ -764,6 +764,32 @@ def _139A_Petr_And_Book():
         i = 0 if i == 6 else i + 1
     print(i + 1)
 
+def _165A_Supercentral_Point():
+    P = lambda: map(int, input().split())
+    N = lambda: int(input())
+
+    n = N()
+    a, cnt = list(), 0
+    for _ in range(n):
+        x, y = P()
+        a.append((x, y))
+    for i in range(n):
+        x, y = a[i][0], a[i][1]
+        l, r, u, d = 0, 0, 0, 0
+        for j in range(n):
+            if x == a[j][0] and y != a[j][1]:
+                if y < a[j][1]:
+                    u = 1
+                else:
+                    d = 1
+            if y == a[j][1] and x != a[j][0]:
+                if x < a[j][0]:
+                    r = 1
+                else:
+                    l = 1
+        cnt += (l and r and u and d)
+    print(cnt)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
