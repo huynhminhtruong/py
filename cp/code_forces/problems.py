@@ -790,6 +790,50 @@ def _165A_Supercentral_Point():
         cnt += (l and r and u and d)
     print(cnt)
 
+def _1133A():
+    Y = lambda: list(map(int, input().split(":")))
+
+    a = Y()
+    b = Y()
+    r = (b[0]*60 + b[1]) - (a[0]*60 + a[1])
+    r = r / 2 + a[0]*60 + a[1]
+    x, y = int(r / 60), int(r % 60)
+    print("{0}:{1}".format(str(x) if x > 9 else "0" + str(x), str(y) if y > 9 else "0" + str(y)))
+
+def _1100A_First_Implement():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    a = Y()
+    r, s, mx = 0, 0, 0
+    for i in range(n):
+        for j in range(n):
+            if j % k != i % k:
+                if a[j] < 0:
+                    s += 1
+                else:
+                    r += 1
+        mx = max(mx, abs(r - s))
+        r, s = 0, 0
+    print(mx)
+
+def _1100A_Second_Implement():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    a = Y()
+    r, s, mx = 0, 0, 0
+    for _ in a:
+        if _ < 0:
+            s += 1
+        else:
+            r += 1
+    for i in range(k):
+        mx = max(abs((s - a[i::k].count(-1)) - (r - a[i::k].count(1))), mx)
+    print(mx)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
