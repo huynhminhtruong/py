@@ -834,6 +834,36 @@ def _1100A_Second_Implement():
         mx = max(abs((s - a[i::k].count(-1)) - (r - a[i::k].count(1))), mx)
     print(mx)
 
+def _1073B_Vasya_And_Books():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+    b = Y()
+    top, r, c = 0, [False]*(n + 1), []
+
+    for i in range(n):
+        if r[b[i]]:
+            c.append(0)
+        else:
+            nxt = top
+            while nxt < n and b[i] != a[nxt]:
+                r[a[nxt]] = True
+                nxt += 1
+            c.append(nxt - top + 1)
+            r[b[i]] = True
+            top = nxt + 1
+    print(*c)
+
+def _991A():
+    P = lambda: map(int, input().split())
+
+    a, b, c, n = P()
+    r = 0 if a < c or b < c else n - (a + b - c)
+    print(-1 if r <= 0 else r)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
