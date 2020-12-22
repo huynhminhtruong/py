@@ -864,6 +864,31 @@ def _991A():
     r = 0 if a < c or b < c else n - (a + b - c)
     print(-1 if r <= 0 else r)
 
+def _670B_Game_Of_Robots_First_Implement():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    s, a = [int(i * (i + 1) / 2) for i in range(n + 1)], Y()
+
+    for i in range(len(s) - 1, 0, -1):
+        if k >= s[i]:
+            p = k - s[i] - 1 if k > s[i] else k - s[i - 1] - 1
+            print(a[p])
+            break
+
+def _670B_Game_Of_Robots_Second_Implement():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    s, i, a = 0, 1, Y()
+
+    while s + i < k:
+        s += i
+        i += 1
+    print(a[k - s - 1])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
