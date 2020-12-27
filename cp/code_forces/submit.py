@@ -12,5 +12,16 @@ if __name__ == '__main__':
     P = lambda: map(int, input().split())
     N = lambda: int(input())
 
-    n, k = P()
-    s, i, a = 0, 1, Y()
+    n = N()
+    a = Y()
+    f, cnt = 0, 0
+    
+    for i in a:
+        if i:
+            cnt += 1
+            f = 1
+        else:
+            if f:
+                cnt += 1
+            f = 0
+    print(cnt if (a[n - 1] or not cnt) else cnt - 1)
