@@ -889,6 +889,46 @@ def _670B_Game_Of_Robots_Second_Implement():
         i += 1
     print(a[k - s - 1])
 
+def _465B_Inbox_First_Implement():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+    i, j = 0, n - 1
+
+    while i < j and not (a[i] and a[j]):
+        if not a[i]:
+            i += 1
+        if not a[j]:
+            j -= 1
+    f, cnt = 0, a[i:j+1].count(1)
+    for i in a[i:j+1]:
+        if not i:
+            f = 1
+        elif f:
+            cnt += 1
+            f = 0
+    print(cnt)
+
+def _465B_Inbox_Second_Implement():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+    f, cnt = 0, 0
+    
+    for i in a:
+        if i:
+            cnt += 1
+            f = 1
+        else:
+            if f:
+                cnt += 1
+            f = 0
+    print(cnt if (a[n - 1] or not cnt) else cnt - 1)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
