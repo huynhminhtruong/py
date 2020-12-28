@@ -958,6 +958,23 @@ def _831A_Unimodal_Array():
     f = (j - i + 1 == a[i:j+1].count(a[i]))
     print("YNEOS"[not f::2])
 
+def _435A():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, m = P()
+    a = Y()
+    i, s, cnt = 0, 0, 1
+
+    while i < n:
+        if s + a[i] <= m:
+            s += a[i]
+            i += 1
+        else:
+            cnt += 1
+            s = 0
+    print(cnt)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
