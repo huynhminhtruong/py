@@ -929,6 +929,35 @@ def _465B_Inbox_Second_Implement():
             f = 0
     print(cnt if (a[n - 1] or not cnt) else cnt - 1)
 
+def _939B_Hamster_Farm():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    a = Y()
+    p = 0
+
+    for i in range(k):
+        if n % a[i] < n % a[p]:
+            p = i
+    # Use floor division (//) to ignore values after the decimal point
+    print("%s %s" % (p + 1, n // a[p]))
+
+def _831A_Unimodal_Array():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+    f, i, j = 0, 0, n - 1
+
+    while i < n - 1 and a[i] < a[i + 1]:
+        i += 1
+    while j > 0 and a[j] < a[j - 1]:
+        j -= 1
+    f = (j - i + 1 == a[i:j+1].count(a[i]))
+    print("YNEOS"[not f::2])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0

@@ -14,14 +14,11 @@ if __name__ == '__main__':
 
     n = N()
     a = Y()
-    f, cnt = 0, 0
-    
-    for i in a:
-        if i:
-            cnt += 1
-            f = 1
-        else:
-            if f:
-                cnt += 1
-            f = 0
-    print(cnt if (a[n - 1] or not cnt) else cnt - 1)
+    f, i, j = 0, 0, n - 1
+
+    while i < n - 1 and a[i] < a[i + 1]:
+        i += 1
+    while j > 0 and a[j] < a[j - 1]:
+        j -= 1
+    f = (j - i + 1 == a[i:j+1].count(a[i]))
+    print("YNEOS"[not f::2])
