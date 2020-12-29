@@ -975,6 +975,31 @@ def _435A():
             s = 0
     print(cnt)
 
+def _849A():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+
+    f = 0 if not (n % 2 and a[0] % 2 and a[n - 1] % 2) else 1
+    print("YNEOS"[not f::2])
+
+def _604A_Uncowed_Forces():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    m = Y()
+    w = Y()
+    hs, hu = P()
+    pt, ans = [500, 1000, 1500, 2000, 2500], 0
+
+    mx_pt = lambda x, m, w: max((30 * x) / 100, (1 - m / 250) * x - 50 * w)
+    for i in range(5):
+        ans += mx_pt(pt[i], m[i], w[i])
+    ans = ans + (hs * 100 - hu * 50)
+    print(int(ans))
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0

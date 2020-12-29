@@ -12,13 +12,5 @@ if __name__ == '__main__':
     P = lambda: map(int, input().split())
     N = lambda: int(input())
 
-    n = N()
-    a = Y()
-    f, i, j = 0, 0, n - 1
-
-    while i < n - 1 and a[i] < a[i + 1]:
-        i += 1
-    while j > 0 and a[j] < a[j - 1]:
-        j -= 1
-    f = (j - i + 1 == a[i:j+1].count(a[i]))
-    print("YNEOS"[not f::2])
+    m = Y()
+    w = Y()
