@@ -1000,6 +1000,24 @@ def _604A_Uncowed_Forces():
     ans = ans + (hs * 100 - hu * 50)
     print(int(ans))
 
+def _count_digits(n) -> int:
+    s, i = 0, 1
+    while i < n + 1:
+        s += n - i + 1
+        i *= 10
+    return s
+
+def _620B():
+    P = lambda: map(int, input().split())
+
+    a, b = P()
+    cnt, l = 0, [6, 2, 5, 5, 4, 5, 6, 3, 7, 6]
+    n = str(list(range(a, b + 1)))
+    
+    for i in range(10):
+        cnt += l[i] * n.count(str(i))
+    print(cnt)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
