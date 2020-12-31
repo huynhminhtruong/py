@@ -1018,6 +1018,26 @@ def _620B():
         cnt += l[i] * n.count(str(i))
     print(cnt)
 
+def _920A():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+    N = lambda: int(input())
+
+    t = N()
+
+    while t > 0:
+        n, k = P()
+        a = Y()
+        mx, s = a[0] - 1, a[0]
+
+        for i in range(1, k):
+            mx = max(mx, (a[i] - s) // 2)
+            s = a[i]
+        mx = max(mx, n - s) + 1
+        print("%s" % (mx if not (n == k) else 1))
+
+        t -= 1
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
