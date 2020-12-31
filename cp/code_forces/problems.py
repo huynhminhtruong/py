@@ -1038,6 +1038,21 @@ def _920A():
 
         t -= 1
 
+def _5A():
+    p, ans = 0, 0
+
+    try:
+        while True:
+            t = input()
+            c = t.find(":")
+            if c != -1:
+                ans += p * (len(t) - c - 1)
+            else:
+                p += 1 if t[0] == "+" else -1
+    except:
+        pass
+    print(ans)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
