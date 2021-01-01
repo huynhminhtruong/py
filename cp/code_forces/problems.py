@@ -1053,6 +1053,22 @@ def _5A():
         pass
     print(ans)
 
+def _368B():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+    N = lambda: int(input())
+
+    n, d = P()
+    a = Y()
+    m = N()
+
+    a.sort()
+    mx = min(n, m)
+    ans = sum(a[:mx])
+    if mx == n:
+        ans += (n - m) * d
+    print(ans)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
