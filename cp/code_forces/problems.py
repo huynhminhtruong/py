@@ -1069,6 +1069,13 @@ def _368B():
         ans += (n - m) * d
     print(ans)
 
+def _724A_Checking_The_Calendar():
+    a = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    c = input()
+    n = input()
+    # Difference day of the week between adjective months are (0, 2, 3)
+    print("YNEOS"[not ((a.index(n) - a.index(c) + 7) % 7 in (0, 2, 3))::2])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0

@@ -4,6 +4,7 @@ import random
 import re
 import sys
 import functools
+import datetime as dt
 from operator import itemgetter, attrgetter
 from collections import Counter
 
@@ -12,4 +13,7 @@ if __name__ == '__main__':
     P = lambda: map(int, input().split())
     N = lambda: int(input())
 
-    p, ans = 0, 0
+    a = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    c = input()
+    n = input()
+    print("YNEOS"[not ((a.index(n) - a.index(c) + 7) % 7 in (0, 2, 3))::2])
