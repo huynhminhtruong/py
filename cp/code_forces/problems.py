@@ -1076,6 +1076,36 @@ def _724A_Checking_The_Calendar():
     # Difference day of the week between adjective months are (0, 2, 3)
     print("YNEOS"[not ((a.index(n) - a.index(c) + 7) % 7 in (0, 2, 3))::2])
 
+def _400A_Inna_And_Choose_Options():
+    N = lambda: int(input())
+
+    t = N()
+    a, r = [1, 2, 3, 4, 6, 12], list()
+
+    while t > 0:
+        s = input()
+        for i in a:
+            for j in range(12//i):
+                if s[j::12//i].count("X") == i:
+                    r.append("%sx%s" % (i, 12//i))
+                    break
+        print(len(r), *r)
+        r.clear()
+        t -= 1
+
+def _725A_Jumping_Ball():
+    N = lambda: int(input())
+
+    n = N()
+    s = input()
+    l, r, ans = 0, 0, 0
+
+    if not (s[0] == '>' and s[len(s) - 1] == '<'):
+        l = s.find('>')
+        r = s[::-1].find('<')
+        ans = n if l == -1 or r == -1 else l + r
+    print(ans)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0

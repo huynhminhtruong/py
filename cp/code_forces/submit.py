@@ -13,7 +13,5 @@ if __name__ == '__main__':
     P = lambda: map(int, input().split())
     N = lambda: int(input())
 
-    a = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-    c = input()
-    n = input()
-    print("YNEOS"[not ((a.index(n) - a.index(c) + 7) % 7 in (0, 2, 3))::2])
+    n = N()
+    s = input()
