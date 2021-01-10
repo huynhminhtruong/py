@@ -1106,6 +1106,22 @@ def _725A_Jumping_Ball():
         ans = n if l == -1 or r == -1 else l + r
     print(ans)
 
+def _1054B_Appending_Mex():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+    ans, mx = 0, -1
+
+    for i in range(n):
+        if not(a[i] <= mx + 1):
+            ans = i + 1
+            break
+        else:
+            mx = max(mx, a[i])
+    print(-1 if (not ans) else ans)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
