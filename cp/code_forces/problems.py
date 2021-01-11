@@ -1122,6 +1122,36 @@ def _1054B_Appending_Mex():
             mx = max(mx, a[i])
     print(-1 if (not ans) else ans)
 
+def _106A_Card_Game():
+    c = input()
+    a = ["6", "7", "8", "9", "T", "J", "Q", "K", "A"]
+    b = ["S", "H", "D", "C"]
+    x, y = input().split()    
+
+    if b.index(x[1]) == b.index(y[1]):
+        ans = 0 if a.index(x[0]) <= a.index(y[0]) else 1
+    else:
+        ans = 0 if x[1] != c else 1
+
+    print("YNEOS"[not ans::2])
+
+def _641A():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    s = input()
+    a = Y()
+    nxt, ans = 0, 0
+
+    for i in range(n):
+        nxt += a[nxt] if s[nxt] == '>' else -a[nxt]
+        # nxt += [a[nxt], -a[nxt]][s[nxt] == '<']
+        if nxt >= n or nxt < 0:
+            ans = 2
+            break
+    print("INFINITE"[ans:])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
