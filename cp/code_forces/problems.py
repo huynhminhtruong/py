@@ -1178,6 +1178,30 @@ def _127B_Canvas_Frames():
         d[v] = d[v]//2
     print(sum(d.values())//2)
 
+def _182B_Vasyas_Calendar():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    d = N()
+    n = N()
+    a = Y()
+    cnt = 0
+
+    for i in range(n - 1):
+        cnt += d - a[i]
+    print(cnt)
+
+def _420A_Start_Up():
+    t = input()
+    s = "AHIMOTUWVXY"
+    ans = 1
+
+    for i in t:
+        if s.find(i) == -1:
+            ans = 0
+            break
+    print("YNEOS"[not (ans and t == t[::-1])::2])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
