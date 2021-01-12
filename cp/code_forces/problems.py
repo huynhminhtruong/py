@@ -1152,6 +1152,32 @@ def _641A():
             break
     print("INFINITE"[ans:])
 
+def _56A_Bar():
+    N = lambda: int(input())
+
+    n = N()
+    cnt, a = 0, ["ABSINTH", "BEER", "BRANDY", "CHAMPAGNE", "GIN", "RUM", "SAKE", "TEQUILA", "VODKA", "WHISKEY", "WINE"]
+
+    while n > 0:
+        t = input()
+        cnt += ((t.isnumeric() and int(t) < 18) or (t in a))
+        n -= 1
+    print(cnt)
+
+def _127B_Canvas_Frames():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+    d = dict()
+
+    for i in range(n):
+        d[a[i]] = d.get(a[i], 0) + 1
+    for v in d.keys():
+        d[v] = d[v]//2
+    print(sum(d.values())//2)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
