@@ -1202,6 +1202,58 @@ def _420A_Start_Up():
             break
     print("YNEOS"[not (ans and t == t[::-1])::2])
 
+def _660B_Seating_On_Bus():
+    P = lambda: map(int, input().split())
+
+    n, m = P()
+    l = list()
+
+    for i in range(m):
+        if (i + 1) <= 2 * n:
+            l.append([i + 1])
+        else:
+            l[i % (2 * n)].append(i + 1)
+    for i in l:
+        print(*i[::-1], end=" ")
+
+def _35A_Shell_Game():
+    # Requires input and output files
+    cin = open("input.txt","r")
+    cout = open("output.txt","w")
+    n = int(cin.readline())
+
+    for i in range(3):
+        j, k = map(int, cin.readline().split())
+        if n in (j, k):
+            n = j if n == k else k
+    cout.write(str(n))
+
+def _14B_Young_Photographer():
+    P = lambda: map(int, input().split())
+
+    n, x = P()
+    a, b = -1, 1001
+
+    for i in range(n):
+        l, r = P()
+        a = max(a, min(l, r))
+        b = min(b, max(l, r))
+    print(-1 if b < a else [min(abs(x - a), abs(x - b)), 0][x >= a and x <= b])
+
+def _1090M_The_Pleasant_Walk():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    a = Y()
+    nxt, mx = 0, 0
+
+    for i in range(1, n):
+        if a[i] == a[i - 1]:
+            mx = max(mx, i - nxt)
+            nxt = i
+    print(max(mx, n - nxt))
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
