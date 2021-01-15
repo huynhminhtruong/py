@@ -1254,6 +1254,103 @@ def _1090M_The_Pleasant_Walk():
             nxt = i
     print(max(mx, n - nxt))
 
+def _1177A_Digits_Sequence():
+    N = lambda: int(input())
+
+    n = N()
+    cnt, i = 0, 1
+
+    while cnt + int(math.log10(i) + 1) < n:
+        cnt += int(math.log10(i) + 1)
+        i += 1
+    print(str(i)[n - cnt - 1])
+
+def _958B1_Maximum_Control():
+    P = lambda: map(int, input().split())
+    N = lambda: int(input())
+
+    n = N()
+    a = [0]*n
+
+    while n > 1:
+        u, v = P()
+        a[u - 1] += 1
+        a[v - 1] += 1
+        n -= 1
+    # Comprehension in Python
+    print(len([i for i in range(len(a)) if a[i] < 2]))
+
+def _125B_Simple_XML_1st_Implement():
+    s = input()
+    lv, pad, nst = 0, -1, 1
+
+    for i in range(len(s)):
+        if s[i] == "<":
+            pad += nst
+            nst = 1
+        elif s[i] == "/":
+            pad -= 1
+            nst = 0
+        elif s[i] == ">":
+            print(" "*(2 * pad) + s[lv:i+1])
+            lv = i + 1
+
+def _125B_Simple_XML_2st_Implement():
+    s = input().split(">")
+    pad = -1
+
+    for c in s:
+        if not len(c):
+            continue
+        if c[1] == "/":
+            print(" "*(2*pad) + c + ">")
+            pad -= 1
+        else:
+            pad += 1
+            print(" "*(2*pad) + c + ">")
+
+def _478A_Initial_Bet():
+    a = list(map(int, input().split()))
+    print(-1 if ((not sum(a)) or (sum(a) % 5)) else sum(a)//5)
+
+def _719A_Countryside_1st_Implement():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+    k, ans = -1, -1
+
+    for i in range(n, 0, -1):
+        if a[i - 1] == 0:
+            ans = 1
+            break
+        if a[i - 1] == 15:
+            ans = 0
+            break
+        if k >= 0:
+            ans = not (a[i - 1] > k)
+            break
+        else:
+            k = a[i - 1]
+    print(["DOWN", "UP", -1][ans if ans != -1 else 2])
+
+def _719A_Countryside_2nd_Implement():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+
+    if a[-1] == 0:
+        print("UP")
+    elif a[-1] == 15:
+        print("DOWN")
+    elif n == 1:
+        print(-1)
+    else:
+        print(["DOWN", "UP"][a[-2] < a[-1]])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
