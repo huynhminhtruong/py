@@ -1351,6 +1351,41 @@ def _719A_Countryside_2nd_Implement():
     else:
         print(["DOWN", "UP"][a[-2] < a[-1]])
 
+def _570A_Elections():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, m = P()
+    c = [0]*n
+
+    while m > 0:
+        a = Y()
+        c[a.index(max(a))] += 1
+        m -= 1
+    print(c.index(max(c)) + 1)
+
+def _471A_MUH_And_Sticks_1st_Implement():
+    Y = lambda: list(map(int, input().split()))
+
+    a = Y()
+    d = dict()
+
+    for i in a:
+        d[i] = d.get(i, 0) + 1
+    mx = max(d.values())
+    if mx >= 4:
+        a = [i for i in d.keys() if d[i] != mx]
+        print(["Bear", "Elephant"][not len(a) or d[a[-1]] == 2])
+    else:
+        print("Alien")
+
+def _471A_MUH_And_Sticks_2nd_Implement():
+    Y = lambda: list(map(int, input().split()))
+
+    a = Y()
+    a = sorted(a, key=a.count)
+    print("Alien" if a[2] != a[-1] else "Elephant" if a[0] == a[1] else "Bear")
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
