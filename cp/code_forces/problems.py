@@ -1439,6 +1439,36 @@ def _259B_Little_Elephant_And_Magic_Square_2nd_Implement():
     # Comprehensions and join to print matrix
     print("\n".join([" ".join(["{}".format(i) for i in row]) for row in ans]))
 
+def _433A_Kitahara_Harukis_Gift():
+    n = int(input())
+    w = [int(i) for i in input().split()]
+    k, d = w.count(100), w.count(200)
+    d *= 2 if k > 0 else 1
+    print("YNEOS"[(k + d) % 2::2])
+
+def _911A_Nearest_Minimums_1st_Implement():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    mx, d = 0, 10**5 + 1
+
+    for i in range(1, n):
+        if a[i] < a[mx]:
+            mx = i
+            d = 10**5 + 1
+            continue
+        if a[i] == a[mx]:
+            d = min(d, i - mx)
+            mx = i
+    print(d)
+
+def _911A_Nearest_Minimums_2nd_Implement():
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    mx = min(a)
+    a = [i for i in range(n) if a[i] == mx]
+    d = [a[i] - a[i - 1] for i in range(1, len(a))]
+    print(min(d))
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
