@@ -1386,6 +1386,59 @@ def _471A_MUH_And_Sticks_2nd_Implement():
     a = sorted(a, key=a.count)
     print("Alien" if a[2] != a[-1] else "Elephant" if a[0] == a[1] else "Bear")
 
+def _227B_Effective_Approach():
+    Y = lambda: list(map(int, input().split()))
+    N = lambda: int(input())
+
+    n = N()
+    a = Y()
+    ind = [0]*n
+    m = N()
+    b = Counter(Y())
+    v, p = 0, 0
+
+    for i in range(n):
+        ind[a[i] - 1] = i
+
+    for i in b:
+        cnt = ind[i - 1]
+        v += (cnt + 1) * b[i]
+        p += (n - cnt) * b[i]
+    print(v, p)
+
+def _799A_Carrot_Cakes():
+    P = lambda: map(int, input().split())
+
+    n, t, k, d = P()
+    
+    # Remaining of cakes after d // t minutes
+    print("YNEOS"[not n - (d // t) * k > k::2])
+
+def _259B_Little_Elephant_And_Magic_Square_1st_Implement():
+    Y = lambda: list(map(int, input().split()))
+
+    ans = list()
+    a = [0]*3
+
+    for i in range(3):
+        ans.append(Y())
+        a[i] += sum(ans[i])
+    mx = max(a) + 1
+    while sum([mx - a[i] for i in range(3)]) != mx:
+        mx += 1
+    for i in range(3):
+        ans[i][i] = mx - a[i]
+    print("\n".join([" ".join(["{}".format(i) for i in row]) for row in ans]))
+
+def _259B_Little_Elephant_And_Magic_Square_2nd_Implement():
+    # Comprehensions
+    ans = [[int(i) for i in input().split()] for _ in range(3)]
+    s = sum([sum(i) for i in ans]) // 2
+    for i in range(3):
+        ans[i][i] = s - sum(ans[i])
+    # Comprehensions and join to print matrix
+    print("\n".join([" ".join(["{}".format(i) for i in row]) for row in ans]))
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
