@@ -1469,6 +1469,50 @@ def _911A_Nearest_Minimums_2nd_Implement():
     d = [a[i] - a[i - 1] for i in range(1, len(a))]
     print(min(d))
 
+def _1413B_A_New_Technique():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+    N = lambda: int(input())
+
+    t = N()
+
+    while t > 0:
+        n, m = P()
+        a, order = list(), list()
+        d = dict()
+
+        for i in range(n):
+            a = Y()
+            d[a[0]] = d.get(a[0], a)
+        for i in range(m):
+            a = Y()
+            if not d.get(a[0]) is None:
+                order = a
+        for i in order:
+            print(*d[i])
+            
+        t -= 1
+
+def _218B_Airport():
+    Y = lambda: list(map(int, input().split()))
+    P = lambda: map(int, input().split())
+
+    n, m = P()
+    a = Y()
+    b = a.copy()
+    x, y = 0, 0
+
+    for i in range(n):
+        a.sort()
+        x += a[m - 1]
+        if b[0] == 0:
+            b[0] = 1001
+        b.sort()
+        y += b[0]
+        a[m - 1] -= 1
+        b[0] -= 1
+    print(x, y)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
