@@ -1513,6 +1513,62 @@ def _218B_Airport():
         b[0] -= 1
     print(x, y)
 
+def _365A_Good_Number():
+    P = lambda: map(int, input().split())
+
+    n, k = P()
+    cnt = 0
+
+    # Number contains all digits <= k
+    for _ in range(n):
+        s = input()
+        b = [0] * (k + 1)
+        for i in s:
+            if int(i) <= k:
+                b[int(i)] += 1 * (not b[int(i)])
+        cnt += (sum(b) == k + 1)
+    print(cnt)
+
+def _548A_Mike_And_Fax():
+    s = input()
+    k = int(input())
+
+    if len(s) % k:
+        print("NO")
+    else:
+        d = len(s) // k
+        cnt = 0
+        for c in range(0, len(s), d):
+            cnt += (s[c:c + d] == s[c:c + d][::-1])
+        print("YNEOS"[not cnt == k::2])
+
+def _495A_Digital_Counter():
+    s = input()
+    d = [2, 7, 2, 3, 3, 4, 2, 5, 1, 2]
+    print(d[int(s[0])] * d[int(s[1])])
+
+def _6B_Presidents_Office():
+    n, m, c = input().split()
+    a, s = list(), set()
+    n, m = int(n), int(m)
+
+    a = ["." * (m + 2)] + ["." + input() + "." for i in range(n)] + ["." * (m + 2)]
+
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            if a[i][j] == c:
+                # top
+                s.add(a[i - 1][j])
+                # bot
+                s.add(a[i + 1][j])
+                # left
+                s.add(a[i][j - 1])
+                # right
+                s.add(a[i][j + 1])
+    s.discard(".")
+    s.discard(c)
+    print(len(s))
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
