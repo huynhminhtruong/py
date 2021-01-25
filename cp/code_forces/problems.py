@@ -1569,6 +1569,47 @@ def _6B_Presidents_Office():
     s.discard(c)
     print(len(s))
 
+def _43B_Letter():
+    s, t = input(), input()
+    d, a = dict(), dict()
+
+    for i in s:d[i] = d.get(i, 0) + 1
+    for i in t:a[i] = a.get(i, 0) + 1
+
+    for k in a.keys():
+        if k != " " and (not k in d.keys() or d[k] < a[k]):
+            print("NO")
+            break
+    else:
+        print("YES")
+
+def _556B_Case_Of_Fake_Numbers_1st_Implement():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    for i in range(1, n + 1):
+        a = [(a[j] + 1) % n if not j % 2 else (a[j] - 1) % n for j in range(n)]
+        cnt = ft.reduce(lambda x, y: x + y, [a[j] == j for j in range(n)])
+        if cnt == n:
+            print("YES")
+            break
+    else:
+        print("NO")
+
+def _556B_Case_Of_Fake_Numbers_2nd_Implement():
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = a[0] - n # Distance of the first element and round n that value of the first element equals 0
+
+    for i in range(1, n):
+        # Determine current number will be standing left or right round n
+        if (a[i] + n + d) % n != i:
+            print("NO")
+            break
+        d = -d
+    else:
+        print("YES")
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
