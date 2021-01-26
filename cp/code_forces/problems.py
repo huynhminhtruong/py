@@ -1613,7 +1613,7 @@ def _556B_Case_Of_Fake_Numbers_2nd_Implement():
 def _1105A_Salem_And_Sticks():
     n = int(input())
     a = list(map(int, input().split()))
-    p, cost = -1, 10**4 + 1
+    p, cost = -1, 10**6 + 1
 
     for i in range(1, 101):
         mx = 0
@@ -1624,6 +1624,41 @@ def _1105A_Salem_And_Sticks():
             cost = mx
             p = i
     print(p, cost)
+
+def _The_Artful_Expedient():
+    n = int(input())
+    x = list(map(int, input().split()))
+    y = list(map(int, input().split()))
+
+    # Explaination: https://codeforces.com/blog/entry/55009
+    print("Karen")
+
+def _984B_Minesweeper():
+    n, m = map(int, input().split())
+    a = ["." * (m + 2)] + [".%s." % (input()) for _ in range(n)] + ["." * (m + 2)]
+    b = [["."] * (m + 2) for i in range(n + 2)]
+
+    convert = lambda c: 1 if str(c) == "." else c if str(c) == "*" else c + 1
+
+    for i in range(1, n + 1):
+        if "*" in set(a[i]):
+            for d in range(m + 2):
+                if a[i][d] == "*":
+                    b[i][d] = "*" # has bomb
+                    b[i][d - 1] = convert(b[i][d - 1]) # left
+                    b[i][d + 1] = convert(b[i][d + 1]) # right
+                    b[i - 1][d] = convert(b[i - 1][d]) # top
+                    b[i - 1][d - 1] = convert(b[i - 1][d - 1]) # top left
+                    b[i - 1][d + 1] = convert(b[i - 1][d + 1]) # top right
+                    b[i + 1][d] = convert(b[i + 1][d]) # bot
+                    b[i + 1][d - 1] = convert(b[i + 1][d - 1]) # bot left
+                    b[i + 1][d + 1] = convert(b[i + 1][d + 1]) # bot right
+    for i in range(1, n + 1):
+        if a[i][1:m + 1] != "".join(["%s" % (i) for i in b[i]])[1:m + 1]:
+            print("NO")
+            break
+    else:
+        print("YES")
 
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
