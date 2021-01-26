@@ -1610,6 +1610,21 @@ def _556B_Case_Of_Fake_Numbers_2nd_Implement():
     else:
         print("YES")
 
+def _1105A_Salem_And_Sticks():
+    n = int(input())
+    a = list(map(int, input().split()))
+    p, cost = -1, 10**4 + 1
+
+    for i in range(1, 101):
+        mx = 0
+        for k in a:
+            # Calculate cost of a[k] into i then get cost of a[k] into consecutive of i
+            mx += max(abs(k - i) - 1, 0)
+        if mx < cost:
+            cost = mx
+            p = i
+    print(p, cost)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
