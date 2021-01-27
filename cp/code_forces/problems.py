@@ -1660,6 +1660,36 @@ def _984B_Minesweeper():
     else:
         print("YES")
 
+def _975B_Mancala():
+    a = [int(i) for i in input().split()]
+
+    mx = -1
+
+    for i in range(14):
+        b = a.copy()
+        if a[i]:
+            b[i], d, ans = 0, i + 1, 0
+            r = (a[i] + d) // 14
+            l = (a[i] + d) % 14
+
+            if d + a[i] < 14:
+                ans = sum([j + 1 for j in a[d:d + a[i]] if not (j + 1) % 2])
+            else:
+                for j in range(14):
+                    b[j] += r
+                if d > l:
+                    # not overlap
+                    for j in range(l, d):
+                        b[j] -= 1
+                else:
+                    # overlap
+                    for j in range(d, d + abs(d - l)):
+                        b[j] += 1
+                ans = sum([p for p in b if not p % 2])
+            mx = max(mx, ans)
+
+    print(mx)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
