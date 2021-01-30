@@ -1752,6 +1752,33 @@ def _366A_():
     else:
         print(-1)
 
+def _120B_Quiz_League():
+    cin = open("input.txt", "r")
+    cout = open("output.txt", "w")
+    n, k = map(int, cin.readline().split())
+    a = [int(i) for i in cin.readline().split()]
+    a = [i + 1 for i in range(n) if a[i]]
+
+    for i, v in enumerate(a):
+        if k <= v:
+            cout.write(str(v))
+            break
+    else:
+        cout.write(str(a[0]))
+
+def _292A_SMSC():
+    n = int(input())
+    a = [[int(i) for i in input().split()] for _ in range(n)]
+    mx, cnt = a[0][1], a[0][1]
+
+    for i in range(1, n):
+        t = a[i][0] - a[i - 1][0]
+        cnt -= t
+        if cnt <= 0:cnt = 0
+        cnt += a[i][1]
+        mx = max(mx, cnt)
+    print(cnt + a[n - 1][0], mx)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
