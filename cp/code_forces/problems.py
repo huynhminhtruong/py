@@ -1812,6 +1812,11 @@ def _459A():
     else:
         print(-1)
 
+def _466A_Cheap_Travel():
+    n, m, a, b = map(int, input().split())
+    d = (n // m) * b
+    print([min(n * a, d + (n % m) * a, d + b), min(n * a, b)][not d])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
