@@ -390,7 +390,7 @@ def _1228A_Distinct_Digits():
             break
     print(i if f else -1)
 
-def _1230A_():
+def _1230A():
     Y = lambda: list(map(int, input().split()))
 
     a = Y()
@@ -715,7 +715,7 @@ def _404A_Valera_And_X():
             break
     print("YNEOS"[not r::2])
 
-def _334A_():
+def _334A():
     N = lambda: int(input())
 
     n = N()
@@ -790,7 +790,7 @@ def _165A_Supercentral_Point():
         cnt += (l and r and u and d)
     print(cnt)
 
-def _1133A_():
+def _1133A():
     Y = lambda: list(map(int, input().split(":")))
 
     a = Y()
@@ -857,7 +857,7 @@ def _1073B_Vasya_And_Books():
             top = nxt + 1
     print(*c)
 
-def _991A_():
+def _991A():
     P = lambda: map(int, input().split())
 
     a, b, c, n = P()
@@ -958,7 +958,7 @@ def _831A_Unimodal_Array():
     f = (j - i + 1 == a[i:j+1].count(a[i]))
     print("YNEOS"[not f::2])
 
-def _435A_():
+def _435A():
     Y = lambda: list(map(int, input().split()))
     P = lambda: map(int, input().split())
 
@@ -975,7 +975,7 @@ def _435A_():
             s = 0
     print(cnt)
 
-def _849A_():
+def _849A():
     Y = lambda: list(map(int, input().split()))
     N = lambda: int(input())
 
@@ -1007,7 +1007,7 @@ def _count_digits(n) -> int:
         i *= 10
     return s
 
-def _620B_():
+def _620B():
     P = lambda: map(int, input().split())
 
     a, b = P()
@@ -1018,7 +1018,7 @@ def _620B_():
         cnt += l[i] * n.count(str(i))
     print(cnt)
 
-def _920A_():
+def _920A():
     Y = lambda: list(map(int, input().split()))
     P = lambda: map(int, input().split())
     N = lambda: int(input())
@@ -1038,7 +1038,7 @@ def _920A_():
 
         t -= 1
 
-def _5A_():
+def _5A():
     p, ans = 0, 0
 
     try:
@@ -1053,7 +1053,7 @@ def _5A_():
         pass
     print(ans)
 
-def _368B_():
+def _368B():
     Y = lambda: list(map(int, input().split()))
     P = lambda: map(int, input().split())
     N = lambda: int(input())
@@ -1135,7 +1135,7 @@ def _106A_Card_Game():
 
     print("YNEOS"[not ans::2])
 
-def _641A_():
+def _641A():
     Y = lambda: list(map(int, input().split()))
     N = lambda: int(input())
 
@@ -1734,7 +1734,7 @@ def _967A_Mind_The_Gap():
                 print((a[i - 1] + s + 1)//60, (a[i - 1] + s + 1)%60)
                 break
 
-def _366A_():
+def _366A():
     n = int(input())
     a = list()
 
@@ -1778,6 +1778,26 @@ def _292A_SMSC():
         cnt += a[i][1]
         mx = max(mx, cnt)
     print(cnt + a[n - 1][0], mx)
+
+def _46B_Tshirts_From_Sponsor():
+    s = ["S", "M", "L", "XL", "XXL"]
+    a = [int(i) for i in input().split()] + [0]
+    n = int(input())
+
+    for i in range(n):
+        j = s.index(input())
+        mx = j
+        if not a[j]:
+            for k in range(j - 1, -1, -1):
+                if a[k]:
+                    mx = k
+                    break
+            for k in range(j + 1, 6):
+                if a[k]:
+                    mx = mx if mx != j and j - mx < k - j else k
+                    break
+        a[mx] -= 1
+        print("%s" % (s[mx]))
 
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
