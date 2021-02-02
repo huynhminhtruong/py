@@ -1817,6 +1817,45 @@ def _466A_Cheap_Travel():
     d = (n // m) * b
     print([min(n * a, d + (n % m) * a, d + b), min(n * a, b)][not d])
 
+def _1015B_Obtaining_The_String():
+    cin = input
+    n = int(cin())
+    s, t = [*cin()], cin()
+    i, r = 0, list()
+
+    if sorted(s) != sorted(t):
+        print(-1)
+    else:
+        while i < n:
+            j = i
+            while j < n and s[j] != t[i]:
+                j += 1
+            s[i:j + 1] = s[j:j + 1] + s[i:j]
+            r.extend(range(j, i, -1))
+            i += 1
+        print(len(r))
+        print(*r)
+
+def _25B_Phone_Numbers_1st_Implement():
+    cin = input
+    n = int(cin())
+    s, a = cin(), ""
+
+    if not n % 2:
+        a += "-".join([s[i:i + 2] for i in range(0, n, 2)])
+    elif not n % 3:
+        a += "-".join([s[i:i + 3] for i in range(0, n, 3)])
+    else:
+        a += "-".join([s[i:i + 2] for i in range(0, n - 3, 2)])
+        a += "-%s"%(s[n - 3:])
+    print(a)
+
+def _25B_Phone_Numbers_2nd_Implement():
+    cin = input
+    n = int(cin())
+    s = cin()
+    print("-".join([s[i * 2:i * 2 + 2] for i in range(n // 2)]) + s[n - n % 2:])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
