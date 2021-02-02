@@ -1856,6 +1856,28 @@ def _25B_Phone_Numbers_2nd_Implement():
     s = cin()
     print("-".join([s[i * 2:i * 2 + 2] for i in range(n // 2)]) + s[-1] * (n % 2))
 
+def _463A_Caisa_And_Sugar_1st_Implement():
+    cin = input
+    n, s = map(int, cin().split())
+    mx = -1
+
+    for i in range(n):
+        x, y = map(int, cin().split())
+        if x <= s:
+            mx = max(mx, not((s - x) >= 0)) if not y else max(mx, 100 - y) if x + 1 <= s else mx
+    print(int(mx))
+
+def _463A_Caisa_And_Sugar_2nd_Implement():
+    cin = input
+    n, s = map(int, cin().split())
+    mx = -1
+
+    for i in range(n):
+        x, y = map(int, cin().split())
+        if x + min(1, y) <= s:
+            mx = max(mx, (100 - y) % 100)
+    print(mx)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
