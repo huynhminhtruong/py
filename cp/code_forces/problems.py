@@ -1854,7 +1854,7 @@ def _25B_Phone_Numbers_2nd_Implement():
     cin = input
     n = int(cin())
     s = cin()
-    print("-".join([s[i * 2:i * 2 + 2] for i in range(n // 2)]) + s[n - n % 2:])
+    print("-".join([s[i * 2:i * 2 + 2] for i in range(n // 2)]) + s[-1] * (n % 2))
 
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
