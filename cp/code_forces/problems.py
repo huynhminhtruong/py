@@ -1878,6 +1878,143 @@ def _463A_Caisa_And_Sugar_2nd_Implement():
             mx = max(mx, (100 - y) % 100)
     print(mx)
 
+def _1140B_Good_String_1st_Implement():
+    cin = input
+    t = int(cin())
+    while t > 0:
+        n = int(cin())
+        s = input()
+        i, j = -1, n
+        while i < n - 1 and s[i + 1] == "<":
+            i += 1
+        while j > 0 and s[j - 1] == ">":
+            j -= 1
+        print(min(i + 1, n - j))
+        t -= 1
+
+def _1140B_Good_String_2nd_Implement():
+    cin = input
+    t = int(cin())
+    while t > 0:
+        n = int(cin())
+        s = input()
+        print(min(s.find(">") % n, s[::-1].find("<") % n))
+        t -= 1
+
+def _1118B_Tanya_And_Candies():
+    cin = input
+    n = int(cin())
+    a = [int(i) for i in input().split()]
+    x, y, d, k, cnt = sum(a[0:n:2]), sum(a[1:n:2]), 0, 0, 0
+
+    for i in range(n):
+        if not i % 2:
+            x -= a[i]
+            cnt += d + y == k + x
+            d += a[i]
+        else:
+            y -= a[i]
+            cnt += d + y == k + x
+            k += a[i]
+    print(cnt)
+
+def _1191B():
+    cin = input
+    d = {"m": [], "s": [], "p": []}
+    mx = 2
+
+    for i in cin().split():
+        d[i[1]].append(int(i[0]))
+    for i in d.keys():
+        b = sorted(d[i])
+        if 3 - len(d[i]) == 0:
+            b = [b[i] - b[i - 1] for i in range(1, 3)]
+            mx = 0 if b[0] == b[1] and b[0] in (0, 1) else 1 if min(b[0], b[1]) < 3 else 2
+            break
+        if 3 - len(d[i]) == 1:
+            mx = 2 if b[1] - b[0] > 2 else 1
+            break
+    print(mx)
+
+def _1185B_Email_From_Polycarp():
+    cin = input
+    n = int(cin())
+
+    for i in range(n):
+        s = cin()
+        t = cin()
+        pos = 0
+        s += "0"
+
+        for j in range(len(t)):
+            if s[pos] == t[j] and pos < len(s) - 1:
+                pos += 1
+                continue
+            if j == 0 or t[j] != t[j - 1]:
+                pos = -1
+                break
+        print("YNEOS"[not (pos == len(s) - 1)::2])
+
+def _999C_Alphabetic_Removals_1st_Implement():
+    cin = input
+    n, k = map(int, cin().split())
+    s = cin()
+    a = list()
+
+    for c in range(n):
+        a.append((s[c], c))
+    a.sort(key=lambda x:x[0])
+    a = a[k:]
+    a.sort(key=lambda x:x[1])
+    print("".join([a[i][0] for i in range(n - k)]))
+
+def _999C_Alphabetic_Removals_2nd_Implement():
+    cin = input
+    n, k = map(int, cin().split())
+    s = [*cin()]
+    a = sorted([(c, i) for i, c in enumerate(s)])
+    for i in range(k):
+        s[a[i][1]] = ""
+    print("".join(s))
+
+def _134A_Average_Numbers():
+    cin = input
+    n = int(cin())
+    a = [int(i) for i in input().split()]
+    s = sum(a)
+    b = [str(i + 1) for i in range(n) if a[i] * (n - 1) == s - a[i]]
+    print(len(b))
+    print(" ".join(b))
+
+def _88A_Chord():
+    cin = input
+    x, y, z = cin().split()
+    a = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "B", "H"]
+    x, y, z = a.index(x), a.index(y), a.index(z)
+    b = [(x, (x + 3) % 12, (x + 7) % 12), (y, (y + 3) % 12, (y + 7) % 12), (z, (z + 3) % 12, (z + 7) % 12)]
+    c = [(x, (x + 4) % 12, (x + 7) % 12), (y, (y + 4) % 12, (y + 7) % 12), (z, (z + 4) % 12, (z + 7) % 12)]
+
+    for i in range(3):
+        lb = set([x, y, z]).intersection(set(b[i]))
+        lc = set([x, y, z]).intersection(set(c[i]))
+        if len(lc) == 3:
+            print("major")
+            break
+        if len(lb) == 3:
+            print("minor")
+            break
+    else:
+        print("strange")
+
+def _899B_Months_And_Years():
+    cin = input
+    d = "31 28 31 30 31 30 31 31 30 31 30 31 "
+    y = "31 29 31 30 31 30 31 31 30 31 30 31 "
+    s = d * 3 + y + d + "31"
+    n = int(input())
+    a = " ".join(input().split())
+    print("YNEOS"[not a in s::2])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
