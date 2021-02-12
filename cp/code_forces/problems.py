@@ -2015,6 +2015,37 @@ def _899B_Months_And_Years():
     a = " ".join(input().split())
     print("YNEOS"[not a in s::2])
 
+def _412C_Pattern():
+    cin = input
+    n = int(cin())
+    a = [cin() for _ in range(n)]
+    l, r = len(a[0]), ""
+    for i in range(l):
+        s = set([r[i] for r in a])
+        s.discard("?")
+        if not len(s):
+            r += "a"
+        elif len(s) > 1:
+            r += "?"
+        else:
+            r += list(s).pop()
+    print(r)
+
+def get_ins(): return sys.stdin.readline().split()
+def write_outs(a: list): sys.stdout.write(" ".join(a))
+
+def _63B_Settlers_Training():
+    cin = input
+    n, k = map(int, cin().split())
+    d, cnt = Counter([int(i) for i in cin().split()]), 0
+    while d[k] < n:
+        for i in range(k - 1, 0, - 1):
+            if d[i]:
+                d[i + 1] += 1
+                d[i] -= 1
+        cnt += 1
+    print(cnt)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
