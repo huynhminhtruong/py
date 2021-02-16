@@ -2046,6 +2046,51 @@ def _63B_Settlers_Training():
         cnt += 1
     print(cnt)
 
+def _234A_Lefthanders_And_Righthanders():
+    cin = open("input.txt", "r")
+    cout = open("output.txt", "w")
+    n = int(cin.readline())
+    s = cin.readline()
+    d = n//2
+    for i in range(d):
+        if s[i] + s[i + d] == "RL":
+            cout.write("%s %s\n" % (i + d + 1, i + 1))
+        else:
+            cout.write("%s %s\n" % (i + 1, i + d + 1))
+
+def _408B_Garland():
+    cin = input
+    s = Counter(cin())
+    t = Counter(cin())
+    cnt = 0
+
+    for i in t:
+        if s[i]:
+            cnt += min(s[i], t[i])
+        else:
+            print(-1)
+            break
+    else:
+        print(cnt)
+
+def _592A_PawnChess():
+    cin = input
+    a = [cin() for i in range(8)]
+    mw, mb = 8, 8
+
+    for c in range(8):
+        for r in range(8):
+            if a[r][c] == "W":
+                mw = min(mw, r)
+            if a[r][c] != ".":
+                break
+        for r in range(7, -1, -1):
+            if a[r][c] == "B":
+                mb = min(mb, 7 - r)
+            if a[r][c] != ".":
+                break
+    print("AB"[mb < mw])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
