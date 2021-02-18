@@ -103,6 +103,22 @@ def _47B_Coins_2nd_Implement():
             exit()
     print("".join("ABC"[a.index(i)] for i in range(3)))
 
+def _920B_Tea_Queue():
+    cin = input
+    t = int(cin())
+
+    while t > 0:
+        n = int(cin())
+        a, cnt = [0] * n, 0
+        for i in range(n):
+            l, r = map(int, cin().split())
+            cnt += l - cnt if l > cnt else 1
+            if r >= cnt:
+                a[i] += cnt
+            else:
+                cnt -= 1
+        print(*a)
+        t -= 1
 
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
