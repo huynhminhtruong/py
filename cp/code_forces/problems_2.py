@@ -63,6 +63,47 @@ def _1121B_2nd_Implement():
     a = [int(i) for i in input().split()]
     print(max(Counter(map(sum, combinations(a, 2))).values()))
 
+def _31A_Worms_Evolution():
+    cin = input
+    n = int(cin())
+    a = [int(i) for i in input().split()]
+    # itertools.combinations() return possible tuples
+    b = list(combinations(range(n), 2))
+    for i in range(n):
+        for c in b:
+            if a[i] == a[c[0]] + a[c[1]]:
+                print("%s %s %s" % (i + 1, c[0] + 1, c[1] + 1))
+                exit()
+    else:
+        print(-1)
+
+def _47B_Coins_1st_Implement():
+    a = {0: 0, 1: 0, 2: 0}
+    for i in range(3):
+        t = input()
+        if t.count(">"):
+            a[ord(t[0]) % 65] += 1
+        else:
+            a[ord(t[2]) % 65] += 1
+    else:
+        if max(a.values()) != 2:
+            print("Impossible")
+            exit()
+    a = sorted(a.items(), key=lambda x: x[1])
+    print("".join(chr(a[i][0] + 65) for i in range(3)))
+
+def _47B_Coins_2nd_Implement():
+    a = [0] * 3
+    for i in range(3):
+        t = input()
+        a["ABC".index(t[0] if t[1] == ">" else t[2])] += 1
+    else:
+        if max(a) != 2:
+            print("Impossible")
+            exit()
+    print("".join("ABC"[a.index(i)] for i in range(3)))
+
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
