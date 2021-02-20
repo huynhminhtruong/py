@@ -120,6 +120,51 @@ def _920B_Tea_Queue():
         print(*a)
         t -= 1
 
+def _check_string_digits():
+    s = input()
+    # Regex check digits
+    regex = "^[0-9]+$" # Start with digit and end with digit
+    t = re.search(regex, s)
+    print("YNEOS"[t is None::2])
+
+    # Iteration check digits
+    for c in s:
+        if ord(c) < 48 or ord(c) > 57:
+            print("NO")
+            break
+    else:
+        print("YES")
+
+def _958B_Switches_And_Lamps():
+    cin = input
+    n, m = map(int, cin().split())
+    s, l, f = [[] for _ in range(n)], [0] * m, 0
+
+    for i in range(n):
+        t = cin()
+        for j in range(m):
+            if t[j] == "1":
+                l[j] += int(t[j])
+                s[i].append(j)
+    for i in range(n):
+        r = set(l[c] - 1 for c in s[i])
+        if not 0 in r:
+            f = not f
+            break
+    print("YNEOS"[not f::2])
+
+def _960A_Check_The_String():
+    cin = input
+    s = list(cin())
+    a = [0] * 3
+    if len(set(s)) < 3 or s != sorted(s):
+        print("NO")
+    else:
+        for c in s:
+            a["abc".index(c)] += 1
+        print("YNEOS"[not (a[0] == a[2] or a[1] == a[2])::2])
+
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
