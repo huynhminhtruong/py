@@ -164,6 +164,49 @@ def _960A_Check_The_String():
             a["abc".index(c)] += 1
         print("YNEOS"[not (a[0] == a[2] or a[1] == a[2])::2])
 
+def _828A_Restaurant_Tables():
+    cin = input
+    n, a, b = map(int, cin().split())
+    p = [int(i) for i in cin().split()]
+    cnt, c = 0, 0
+
+    for t in p:
+        if t == 1:
+            if a: a -= 1
+            elif b:
+                b -= 1
+                c += 1
+            elif c:
+                c -= 1
+            else: cnt += t
+        else:
+            if b: b -= 1
+            else: cnt += t
+    print(cnt)
+
+def _208D():
+    cin = input
+    n = int(cin())
+    a = [int(v) for v in cin().split()]
+    b = [int(v) for v in cin().split()]
+    c, r = [0] * 5, 0
+    for i in a:
+        r += i
+        for j in range(4, -1, -1):
+            c[j] += r // b[j]
+            r %= b[j]
+    print("%s\n%d" % (" ".join(str(i) for i in c), r))
+
+def _413A_Data_Recovery():
+    cin = input
+    n, m, ln, rn = map(int, cin().split())
+    a = [int(v) for v in cin().split()]
+
+    if ln < min(a) <= max(a) < rn:
+        print(["Incorrect", "Correct"][n - m > 1])
+    else:
+        print(["Correct", "Incorrect"][min(a) < ln or max(a) > rn])
+
 
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))

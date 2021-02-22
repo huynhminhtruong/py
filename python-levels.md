@@ -38,6 +38,7 @@ Advanced:
 - Cython
 
 Projects: 
+- Calulator
 - Tic Tac Toe
 - Tetris
 - Sudoku Solver
