@@ -24,17 +24,21 @@ class Dog(Animal):
 	# private
 	__type_of_dog = "normal"
 
-	def __init__(self, name):
+	def __init__(self, name, age, types, country):
 		# Inheritance in Python 3
-		super(Dog, self).__init__(name)
+		# super(Dog, self).__init__(name)
+		Animal.__init__(self, name)
+		self.age = age
+		self.type = types
+		self.country = country
 
 	def __repr__(self):
 		self.__repr__
 
 	def __str__(self):
-		return "Class Dog print: {}".format(self.name)
+		return "Name: %s\nAge: %s\nType: %s\nCountry: %s" % (self.name, self.age, self.type, self.country)
 
-	def print_animal_name(self):
+	def get_animal_info(self):
 		print(self)
 
 	def get_type_of_dog(self):
@@ -44,12 +48,12 @@ class Dog(Animal):
 if __name__ == '__main__':
 	print("executing")
 
-	d = Dog("Dog")
+	d = Dog("Dog", 20, "Bull", "Russia")
 	# This gives us a list with the object’s attributes
 	# dir(d)
-	d.print_animal_name()
+	d.get_animal_info()
 	print(d.get_type_of_dog())
 
 	# Access single pre underscore function by using imported module
-	role_of_underscore.func()
-	role_of_underscore._private_funct()
+	# role_of_underscore.func()
+	# role_of_underscore._private_funct()
