@@ -1,6 +1,11 @@
 from itertools import groupby
-from collections import defaultdict, namedtuple
+from collections import OrderedDict as od
 
 if __name__ == '__main__':
-    n, col, std = int(input()), input().split().index("MARKS"), namedtuple("std", "x")
-    print("%.2f" % (sum(c.x for c in [std(int(input().split()[col])) for _ in range(n)]) / n))
+    n = int(input())
+    d = od()
+
+    for i in range(n):
+        word = input()
+        d[word] = d.get(word, 0) + 1
+    print("%d\n%s" % (len(d.items()), " ".join(str(i) for i in d.values())))

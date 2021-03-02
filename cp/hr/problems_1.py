@@ -5,7 +5,7 @@ import re
 import sys
 import functools
 from operator import itemgetter, attrgetter
-from collections import Counter, defaultdict, namedtuple
+from collections import Counter, defaultdict, namedtuple, OrderedDict as od
 from itertools import combinations, groupby
 
 def hr_1():
@@ -52,6 +52,27 @@ def hr_collections_defaultdict():
 def hr_collections_namedtuple():
     n, col, std = int(input()), input().split().index("MARKS"), namedtuple("std", "x")
     print("%.2f" % (sum(c.x for c in [std(int(input().split()[col])) for _ in range(n)]) / n))
+
+def hr_collections_ordereddict():
+    n = int(input())
+    d = od()
+
+    for i in range(n):
+        a = input().split()
+        l = len(a)
+        key = " ".join(a[i] for i in range(l - 1))
+        d[key] = d.get(key, 0) + int(a[l - 1])
+    for k, v in d.items():
+        print(k, v)
+
+def hr_count_words():
+    n = int(input())
+    d = od()
+
+    for i in range(n):
+        word = input()
+        d[word] = d.get(word, 0) + 1
+    print("%d\n%s" % (len(d.items()), " ".join(str(i) for i in d.values())))
 
 if __name__ == '__main__':
     n = int(input())
