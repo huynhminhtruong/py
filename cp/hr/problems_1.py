@@ -5,7 +5,7 @@ import re
 import sys
 import functools
 from operator import itemgetter, attrgetter
-from collections import Counter, defaultdict, namedtuple, OrderedDict as od
+from collections import Counter, defaultdict, namedtuple, OrderedDict as od, deque
 from itertools import combinations, groupby
 
 def hr_1():
@@ -73,6 +73,34 @@ def hr_count_words():
         word = input()
         d[word] = d.get(word, 0) + 1
     print("%d\n%s" % (len(d.items()), " ".join(str(i) for i in d.values())))
+
+def hr_collections_deque():
+    n = int(input())
+    d, p = deque(), ["append", "pop", "popleft", "appendleft"]
+
+    for i in range(n):
+        a = input().split()
+
+        if len(a) > 1:
+            if p.index(a[0]) == 0: d.append(a[1])
+            else: d.appendleft(a[1])
+        else:
+            if p.index(a[0]) == 1: d.pop()
+            else: d.popleft()
+    print(*d)
+
+def hr_reduce_fraction():
+    n = int(input())
+    a = [Fraction(*[int(i) for i in input().split()]) for _ in range(n)]
+    r = ft.reduce(lambda x, y: x * y, a)
+    print(r.numerator, r.denominator)
+
+def hr_sort_itemgetter():
+    n, m = map(int, input().split())
+    a = [[int(i) for i in input().split()] for _ in range(n)]
+    k = int(input())
+    a.sort(key=itemgetter(k))
+    print("\n".join(" ".join(str(i) for i in c) for c in a))
 
 if __name__ == '__main__':
     n = int(input())

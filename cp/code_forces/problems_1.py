@@ -41,6 +41,8 @@ def _63A_Sinking_Ship():
         # name = list(map(_convert_status, input().strip().split()))
         name, status = input().strip().split()
         res.append((name, _convert_status(status)))
+    # use attrgetter for object that is an instance of class
+    # use itemgetter for general
     res.sort(key=itemgetter(1))
 
     for _ in res:
