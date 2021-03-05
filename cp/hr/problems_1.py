@@ -102,5 +102,17 @@ def hr_sort_itemgetter():
     a.sort(key=itemgetter(k))
     print("\n".join(" ".join(str(i) for i in c) for c in a))
 
+def hr_regex():
+    n = int(input())
+    regex = "[#]+[a-fA-F0-9]{3,6}"
+    a, f = list(), False
+    for i in range(n):
+        t = input()
+        if t.count("{") > 0 or t.count("}") > 0:
+            f = not f
+        elif f:
+            a.extend(filter(lambda x: 4 <= len(x) < 9, re.findall(regex, t)))
+    print("\n".join(a))
+
 if __name__ == '__main__':
     n = int(input())
