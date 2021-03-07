@@ -6,7 +6,7 @@ import sys
 import functools
 from operator import itemgetter, attrgetter
 from collections import Counter, defaultdict, namedtuple, OrderedDict as od, deque
-from itertools import combinations, groupby
+from itertools import combinations, groupby, permutations
 
 def hr_1():
     n = int(input())
@@ -113,6 +113,49 @@ def hr_regex():
         elif f:
             a.extend(filter(lambda x: 4 <= len(x) < 9, re.findall(regex, t)))
     print("\n".join(a))
+
+def hr_regex_email():
+    n = int(input())
+    regex = "^[a-zA-Z]+[a-z0-9\._-]+[@][a-zA-Z]+[.][a-zA-Z]{1,3}$"
+    for i in range(n):
+        t = input()
+        address = parseaddr(t)
+        g = re.search(regex, address[1])
+        if g:
+            print("ans: %s" % t)
+
+def hr_regex_phonenumber():
+    n = int(input())
+    regex = r"^[789][0-9]{9}$"
+    for i in range(n):
+        t = input()
+        r = re.search(regex, t)
+        print("YNEOS"[not r::2])
+
+def hr_regex_check_character_duplicate():
+    n = int(input())
+    regex = re.compile('^(?=(?:[a-z\d]*[A-Z]){2})(?=(?:\D*\d){3})(?:([a-zA-Z0-9])(?!.*\\1)){10}$')
+    for i in range(n):
+        t = input()
+        r = regex.match(t)
+        print(["Valid", "Invalid"][r is None])
+    # explaination: https://stackoverflow.com/questions/51358885/regex-no-character-should-repeat/51359047
+
+def hr_collections_counter():
+    x = int(input())
+    s = list(map(int, input().split()))
+    s = Counter(s)
+    n, r = int(input()), 0
+    for i in range(n):
+        a, b = map(int, input().split())
+        r += b * (s[a] > 0)
+        s[a] -= 1 * (s[a] > 0)
+    print(r)
+
+def hr_itertools_permutations():
+    s, n = input().split()
+    a = sorted(list(permutations(s, int(n))), key=[itemgetter(0), lambda x: (x[0], x[1])][int(n) != 1])
+    print("\n".join("".join(p) for p in a))
 
 if __name__ == '__main__':
     n = int(input())
