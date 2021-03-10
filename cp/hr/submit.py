@@ -5,9 +5,11 @@ from email.utils import parseaddr, formataddr
 from fractions import Fraction
 from operator import itemgetter
 from collections import deque, Counter
-from itertools import permutations
+from itertools import permutations, combinations, product
 
 if __name__ == '__main__':
     s, n = input().split()
-    a = sorted(list(permutations(s, int(n))), key=[itemgetter(0), lambda x: (x[0], x[1])][int(n) != 1])
-    print("\n".join("".join(p) for p in a))
+    s = sorted(s)
+    d = ft.reduce(lambda x, y: x + y, [list(combinations(s, i)) for i in range(1, int(n) + 1)])
+    d = "\n".join(sorted(["".join(i for i in c) for c in d], key=lambda x: (len(x), x)))
+    print(d)
