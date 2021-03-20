@@ -157,5 +157,64 @@ def hr_itertools_permutations():
     a = sorted(list(permutations(s, int(n))), key=[itemgetter(0), lambda x: (x[0], x[1])][int(n) != 1])
     print("\n".join("".join(p) for p in a))
 
+def hr_set_duplicate():
+    k = int(input())
+    a = [int(i) for i in input().split()]
+    b, c = set(), set()
+
+    # use math logic
+    print((sum(set(a)) * k - sum(a)) // (k - 1))
+
+    # use set difference logic
+    for i in a:
+        if i in b:
+            c.add(i)
+        else:
+            b.add(i)
+    print(b.difference(c).pop())
+
+def hr_sort_descending_list():
+    s = input()
+
+    # use minus (-) operator to sort descending
+    c = sorted(dict(Counter(s)).items(), key=lambda x: (-x[1], x[0]))[:3]
+    print("\n".join(" ".join(str(i) for i in a) for a in c))
+
+def hr_closure_decorator():
+    def convert(s):
+        c = lambda a, b, c: "%s %s %s" % (a, b, c)
+        t = max(len(s[::-1][:10]), len(s)) - min(len(s[::-1][:10]), len(s))
+
+        if t == 0:
+            # has 10 digits only
+            return c("+91", s[:len(s)//2], s[len(s)//2:])
+        if t == 1:
+            # has 0 at head
+            return c("+91", s[1:1 + (len(s) - 1)//2], s[1 + (len(s) - 1)//2:])
+        if t == 2:
+            # has 91 at head
+            return c("+" + s[:2], s[2:2 + (len(s) - 2)//2], s[2 + (len(s) - 2)//2:])
+        # has +91 at head
+        return c(s[:3], s[3:8], s[8:])
+
+    def mapping(func, a):
+        n = len(a)
+        for i in range(n):
+            a[i] = func(a[i])
+        return a
+
+    def wrapper(f):
+        def fun(l):
+            s = lambda x: "%s %s %s" % (x[:3], x[3:8], x[8:])
+            l = mapping(convert, l)
+            f(l)
+        return fun
+
+    @wrapper
+    def sort_phone(l):
+        print(*sorted(l), sep='\n')
+    
+    return sort_phone
+
 if __name__ == '__main__':
     n = int(input())
