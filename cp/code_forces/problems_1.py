@@ -1471,7 +1471,7 @@ def _911A_Nearest_Minimums_2nd_Implement():
     d = [a[i] - a[i - 1] for i in range(1, len(a))]
     print(min(d))
 
-def _1413B_A_New_Technique():
+def _1413B_A_New_Technique_1st():
     Y = lambda: list(map(int, input().split()))
     P = lambda: map(int, input().split())
     N = lambda: int(input())
@@ -1494,6 +1494,24 @@ def _1413B_A_New_Technique():
             print(*d[i])
             
         t -= 1
+
+def _1413B_A_New_Technique_2nd():
+    t = int(input())
+ 
+    for _ in range(t):
+        n, m = map(int, input().split())
+        a, order, f = dict(), set(), False
+        for _ in range(n):
+            s = [i for i in input().split()]
+            a[s[0]] = s
+            order.add(s[0])
+        for _ in range(m):
+            s = [i for i in input().split()]
+            if not f and len(set(s) & order) == n:
+                order = s
+                f = not f
+        for i in order:
+            print(*a[i])
 
 def _218B_Airport():
     Y = lambda: list(map(int, input().split()))

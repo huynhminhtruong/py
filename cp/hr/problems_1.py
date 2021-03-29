@@ -216,5 +216,35 @@ def hr_closure_decorator():
     
     return sort_phone
 
+def hr_closure_decorator_person_lister():
+    def person_lister(f):
+        def inner(people):
+            n = len(people)
+            people = sorted([people[i] + [i] for i in range(n)], key=lambda x: (len(x[2]), x[2], x[4]))
+            return list(map(f, people))
+        return inner
+
+    @person_lister
+    def name_format(person):
+        return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
+
+def hr_zip():
+    n, x = map(int, input().split())
+    a = [[float(i) for i in input().split()] for _ in range(x)]
+    a = list(zip(*a))
+
+    for i in range(n):
+        print("%.1f" % (sum(a[i]) / x))
+
+def pass_as_a_tuples(*args):
+    print(args)
+
+def pass_as_a_dictionary(**kwargs):
+    print(kwargs)
+
 if __name__ == '__main__':
     n = int(input())
+    
+    pass_as_a_tuples(1, 2, 3, 4, 5)
+    pass_as_a_tuples([1, 2, 3])
+    pass_as_a_dictionary(a = 1, b = 2)
