@@ -273,6 +273,11 @@ def _99B_Help_Chef_Gerasim():
     else:
         print(ans[1])
 
+def _922A_Cloning_Toys():
+    x, y = map(int, input().split())
+    y -= 1
+    print("YNEOS"[y < 0 or y > x or (y == 0 and x != 0) or (x - y) % 2::2])
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0

@@ -1,10 +1,4 @@
-def pass_as_a_tuples(*args):
-    print(args)
-
-def pass_as_a_dictionary(**kwargs):
-    print(kwargs)
-
 if __name__ == '__main__':
-    pass_as_a_tuples(1, 2, 3, 4, 5)
-    pass_as_a_tuples([1, 2, 3])
-    pass_as_a_dictionary(a = 1, b = 2)
+    x, y = map(int, input().split())
+    y -= 1
+    print("YNEOS"[y < 0 or y > x or (y == 0 and x != 0) or (x - y) % 2::2])
