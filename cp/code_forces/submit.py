@@ -1,30 +1,14 @@
 from collections import Counter
 from itertools import combinations
 
-def is_subsequences(s_1, s_2) -> bool:
-    i = j = 0
-    while i < len(s_1) and j < len(s_2):
-        if s_1[i] == s_2[j]:
-            i += 1
-        j += 1
-    return i == len(s_1)
-
 if __name__ == '__main__':
-    q = int(input())
+    n = int(input())
+    a = [int(i) for i in input().split()]
+    s = sum(a)
+    t = s
+    s /= 2
 
-    while q > 0:
-        s, t, p = input(), input(), input()
-
-        if not is_subsequences(s, t):
-            print("NO")
-        else:
-            s, t, p = Counter(s), Counter(t), Counter(p)
-
-            for k in t:
-                if not t.get(k) <= s.get(k, 0) + p.get(k, 0):
-                    print("NO")
-                    break
-            else:
-                print("YES")
-
-        q -= 1
+    while n > 0 and t > s:
+        t -= a[n - 1]
+        n -= 1
+    print(n + 1 if t < s else n)
