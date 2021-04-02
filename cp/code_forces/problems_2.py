@@ -318,6 +318,49 @@ def _962A_Equator():
         n -= 1
     print(n + 1 if t < s else n)
 
+def _598B_1st_Implement():
+    a = list(input())
+    m = int(input())
+    s = ""
+
+    while m > 0:
+        l, r, k = map(int, input().split())
+        d = r - l + 1
+
+        for i in range(d):
+            if (i + k) % d == 0:
+                a = a[:l - 1] + a[i + l - 1:r] + a[l - 1:i + l - 1] + a[r:]
+                break
+        m -= 1
+    print("".join(a))
+
+def _598B_2nd_Implement():
+    a = list(input())
+    m = int(input())
+    s = ""
+
+    while m > 0:
+        l, r, k = map(int, input().split())
+        k %= (r - l + 1)
+        a = a[:l - 1] + a[r - k:r] + a[l - 1:r - k] + a[r:]
+        m -= 1
+    print("".join(a))
+
+def _437A():
+    s = list()
+    for _ in range(4):
+        s.append(len(input()) - 2)
+    l = sorted(s)
+    mn, mx = l[0], l[3]
+    mn = l[0] if l[0] <= l[1] / 2 else 0
+    mx = l[3] if l[3] >= l[2] * 2 else 0
+    if not mn and mx:
+        print(chr(s.index(mx) + ord("A")))
+    elif mn and not mx:
+        print(chr(s.index(mn) + ord("A")))
+    else:
+        print("C")
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0

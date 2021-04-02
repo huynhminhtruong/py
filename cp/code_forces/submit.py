@@ -1,14 +1,14 @@
-from collections import Counter
-from itertools import combinations
-
 if __name__ == '__main__':
-    n = int(input())
-    a = [int(i) for i in input().split()]
-    s = sum(a)
-    t = s
-    s /= 2
-
-    while n > 0 and t > s:
-        t -= a[n - 1]
-        n -= 1
-    print(n + 1 if t < s else n)
+    s = list()
+    for _ in range(4):
+        s.append(len(input()) - 2)
+    l = sorted(s)
+    mn, mx = l[0], l[3]
+    mn = l[0] if l[0] <= l[1] / 2 else 0
+    mx = l[3] if l[3] >= l[2] * 2 else 0
+    if not mn and mx:
+        print(chr(s.index(mx) + ord("A")))
+    elif mn and not mx:
+        print(chr(s.index(mn) + ord("A")))
+    else:
+        print("C")
