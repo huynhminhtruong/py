@@ -1,9 +1,9 @@
-class SingleNode:
+class SinglyNode:
 	def __init__(self, data):
 		self.data = data
 		self.next = None
 
-class DoubleNode:
+class DoublyNode:
 	def __init__(self, data):
 		self.previous = None
 		self.next = None
@@ -32,7 +32,7 @@ class LinkedList:
 	def append(self, node: SingleNode):
 		pass
 
-	def insert(self, node: SingleNode):
+	def insert(self, node: SinglyNode):
 		if self.get_head() is None:
 			self.set_head(node)
 		else:
@@ -42,7 +42,7 @@ class LinkedList:
 			current_node.next = node
 			self.set_tail(current_node.next)
 
-	def delete(self, node: SingleNode):
+	def delete(self, node: SinglyNode):
 		prev_node, current_node = self.search_node(node)
 
 		# Delete head
