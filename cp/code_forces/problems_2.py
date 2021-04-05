@@ -384,6 +384,26 @@ def _493A_Vasya_And_Football():
             c[d[2]] = c.get(d[2], 0) + cnt
         t -= 1
 
+def _1066C_Books_Queries():
+    q = int(input())
+    d, i, j, f = dict(), 0, 0, True
+
+    while q > 0:
+        p, k = input().split()
+        if f:
+            d[k] = d.get(k, 0)
+            f = not f
+        else:
+            if p == "L":
+                i -= 1
+                d[k] = d.get(k, i)
+            elif p == "R":
+                j += 1
+                d[k] = d.get(k, j)
+            else:
+                print(min(abs(i - d.get(k)), abs(j - d.get(k))))
+        q -= 1
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
