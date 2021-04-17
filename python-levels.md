@@ -37,6 +37,12 @@ Advanced:
 - Packages
 - Cython
 
+Algorithms: 
+- Sorting & Searching
+- Greedy
+- Backtracking
+- Dynamic Programming
+
 Projects: 
 - Calulator
 - Tic Tac Toe

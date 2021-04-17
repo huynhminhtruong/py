@@ -60,6 +60,10 @@
         sudo apt install python3.8(For build PyQt5 app)
     # Install Python from source - extract compressed files(tgz files): 
         tar –xf Python-3.8.3.tgz
+    # Store installed Python Packages version
+        pip freeze > requirements.txt
+    # Install Python Packages from file
+        pip install -r requirements.txt
     # Link: 
         https://phoenixnap.com/kb/extract-tar-gz-files-linux-command-line
 5. PyQt
@@ -96,3 +100,19 @@
         sudo apt install qttools5-dev
         Open Qt Designer: designer
     # Link: https://wiki.qt.io/Install_Qt_5_on_Ubuntu
+7. Django: 
+    # Create a virtual environment: 
+        python3 -m venv project_name
+    # Install Django web framework: 
+        pip install django==2.0.7
+    # Create Django project: 
+        django-admin startproject project_name
+    # Create a superuser: 
+        - Run this cmd to apply: admin, auth, contenttypes and sessions: python manage.py migrate
+        - Next: python manage.py createsuperuser
+    # Create apps into Django project: 
+        - Create: python manage.py startapp app_name
+        - Generate SQL command: python manage.py makemigrations
+        - Execute generated SQL command: python manage.py migrate
+    # Upgrade Django version: 
+        - pip install --upgrade django==specify_version

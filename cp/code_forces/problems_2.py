@@ -404,6 +404,26 @@ def _1066C_Books_Queries():
                 print(min(abs(i - d.get(k)), abs(j - d.get(k))))
         q -= 1
 
+def _81A():
+    s, r = list(input()), []
+
+    for c in s:
+        if r and c == r[-1]:r.pop()
+        else:r.append(c)
+    print("".join(r))
+
+def _219B():
+    p, d = map(int, input().split())
+    k, s = 1, p
+    p += (p % 10 == 9)
+
+    # distance from p to p-th has k numbers of nine
+    # p - p % 10 ** k - 1
+    while p % 10 ** k + 1 <= d:
+        s = p - p % 10 ** k - 1
+        k += 1
+    print(s)
+
 if __name__ == '__main__':
     n = list(map(int, input().strip().split()))
     c = 0
