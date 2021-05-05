@@ -104,7 +104,7 @@
     # Create a virtual environment: 
         python3 -m venv project_name
     # Install Django web framework: 
-        pip install django==2.0.7
+        pip install django==3.2.1
     # Create Django project: 
         django-admin startproject project_name
     # Create a superuser: 
@@ -116,3 +116,24 @@
         - Execute generated SQL command: python manage.py migrate
     # Upgrade Django version: 
         - pip install --upgrade django==specify_version
+    # Install Django Rest Framework: 
+        - pip install djangorestframework
+    # Start django project: 
+        - py manage.py runserver
+8. Docker: 
+    # Create a Dockerfile: 
+    # Build Image from Dockerfile: 
+        - Image has many image layers(Created by execute RUN command)
+        - cmd: docker image build -t <image-name> <context>
+    # Run Docker Container: 
+        - docker container run -it --name <define name for image> <name of docker image>
+    # Docker Client and Docker Daemon: 
+    # Docker Registry: 
+        - Register Docker Image
+    # Check image layers: 
+        - docker inspect image <image-name>
+    # Remove docker image: 
+        - remove by name: docker image rm -f <image-name>
+        - remove by id: docker rmi -f <image-id>
+    # Remove docker container by id: 
+        - docker container rm -f <docker-container-id>

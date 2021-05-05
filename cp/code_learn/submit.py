@@ -99,11 +99,13 @@ class Numbers:
 
 if __name__ == "__main__":
     n = int(input())
-    a = Numbers()
+    a, cnt = list(), 1
 
     for i in range(n):
-        a.add(int(input()))
-
-    print(a)
-    a.shell_sort(reverse=True)
-    print(a)
+        a.append(int(input()))
+    a.sort()
+    k = int(input())
+    for i in range(1, n):
+        if a[i] - a[i - 1] > k:
+            cnt += 1
+    print(cnt)
