@@ -3,7 +3,7 @@
 # Polymorphism: Overloading(Compile Time) vs Overriding(Runtime)
 # Abstraction vs Interface: (What/Is-a) vs (Has-a)
 
-import role_of_underscore
+# import role_of_underscore
 import sys, os
 
 class Animal:
